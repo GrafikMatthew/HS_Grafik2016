@@ -1,0 +1,101 @@
+<!--
+
+.o8888 .o88o. 8888o. 888888 888888 8888o. 888888    8888o. .o88o. 88  88 888888 .o8888
+88     88  88 88  88   88   88     88  88   88      88  88 88  88 '8..8' 88     88    
+88     88  88 88  88   88   8888   88  88   88      8888Y' 88  88  '88'  8888   'Y88o.
+88     88  88 88  88   88   88     88  88   88      88  88 88  88 .8''8. 88         88
+'Y8888 'Y88Y' 88  88   88   888888 88  88   88      8888Y' 'Y88Y' 88  88 888888 8888Y'
+
+-->
+{% macro ContentBox(top_bgcolor, top_bgimage, top_headingtype, top_headingtext, top_headingcolor, top_bodytext, top_bodycolor, top_align, bottom_bgcolor, bottom_bgimage, bottom_headingtype, bottom_headingtext, bottom_headingcolor, bottom_bodytext, bottom_bodycolor, bottom_align, link_url, link_typetop, link_typebottom, top_videomp4, top_videowebm, bottom_videomp4, bottom_videowebm) %}
+	<div class="{{ widget.section_boxsizing }} column">
+		{% if widget.section_boxtypetop != "off" %}
+			{% if link_url and link_typetop == "full" %}
+				<a href="{{ link_url }}">
+			{% endif %}
+			<div class="Box-Top {% if not top_bgimage %}No-Image{% endif %} {{ widget.section_boxtypetop }}" style="{% if widget.section_boxtypetop == 'Custom-Height' %}height:{{ widget.section_heighttop }};{% endif %}background:{{ top_bgcolor }} url('{{ top_bgimage }}') no-repeat 50% 50%; background-size: cover;">
+				{% if top_videowebm or top_videomp4 %}
+					<video cover="{{ top_bgimage }}" autoplay loop muted>
+						{% if top_videowebm %}<source src="{{ top_videowebm }}" type="video/webm">{% endif %}
+						{% if top_videomp4 %}<source src="{{ top_videomp4 }}" type="video/webm">{% endif %}
+					</video>
+				{% endif %}
+				<div class="Flex-Container {{ top_align }}">
+					{% if top_headingtext and top_headingtype != "off" %}
+						{% if link_url and link_typetop == "heading" %}<a href="{{ link_url }}">{% endif %}
+						<{{ top_headingtype }} class="Heading Flex-Item" style="{% if top_headingcolor %}color:{{ top_headingcolor }};{% endif %}">{{ top_headingtext }}</{{ top_headingtype }}>
+						{% if link_url and link_typetop == "heading" %}</a>{% endif %}
+					{% endif %}
+					{% if top_bodytext %}
+						<div class="Text Flex-Item" style="{% if top_bodycolor %}color:{{ top_bodycolor }};{% endif %}">{{ top_bodytext }}</div>
+					{% endif %}
+				</div>
+			</div>
+			{% if link_url and link_typetop == "full" %}
+				</a>
+			{% endif %}
+		{% endif %}
+		{% if widget.section_boxtypebottom != "off" %}
+			{% if link_url and link_typebottom == "full" %}
+				<a href="{{ link_url }}">
+			{% endif %}
+			<div class="Box-Bottom {% if not bottom_bgimage  %}No-Image{% endif %} {{ widget.section_boxtypebottom }}" style="{% if widget.section_boxtypebottom == 'Custom-Height' %}height:{{ widget.section_heightbottom }};{% endif %}background:{{ bottom_bgcolor }} url('{{ bottom_bgimage }}') no-repeat 50% 50%; background-size: cover;">
+				{% if bottom_videowebm or bottom_videomp4 %}
+					<video cover="{{ bottom_bgimage }}" autoplay loop muted>
+						{% if bottom_videowebm %}<source src="{{ bottom_videowebm }}" type="video/webm">{% endif %}
+						{% if bottom_videomp4 %}<source src="{{ bottom_videomp4 }}" type="video/webm">{% endif %}
+					</video>
+				{% endif %}
+				<div class="Flex-Container {{ bottom_align }}">
+					{% if bottom_headingtext and bottom_headingtype != "off" %}
+						{% if link_url and link_typebottom == "heading" %}<a href="{{ link_url }}">{% endif %}
+						<{{ bottom_headingtype }} class="Heading Flex-Item" style="{% if bottom_headingcolor %}color:{{ bottom_headingcolor }};{% endif %}">{{ bottom_headingtext }}</{{ bottom_headingtype }}>
+						{% if link_url and link_typebottom == "heading" %}</a>{% endif %}
+					{% endif %}
+					{% if bottom_bodytext %}
+						<div class="Text Flex-Item" style="{% if bottom_bodycolor %}color:{{ bottom_bodycolor }};{% endif %}">{{ bottom_bodytext }}</div>
+					{% endif %}
+				</div>
+			</div>
+			{% if link_url and link_typebottom == "full" %}
+				</a>
+			{% endif %}
+		{% endif %}
+	</div>
+{% endmacro %}
+<section id="{{ widget.section_customid }}" class="Theme-Widget Theme-ContentBoxes {{ widget.section_customclasses }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+	<div class="row Theme-Interior" style="{% if widget.section_bgtype == 'box' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+		{% if widget.section_boxsizing == "medium-12" or widget.section_boxsizing == "medium-6" or widget.section_boxsizing == "medium-4" or widget.section_boxsizing == "medium-3 small-6" %}
+			{{ ContentBox(
+				widget.top1_bgcolor, widget.top1_bgimage.src, widget.top1_headingtype, widget.top1_headingtext, widget.top1_headingcolor, widget.top1_bodytext, widget.top1_bodycolor, widget.top1_textalign,
+				widget.bottom1_bgcolor, widget.bottom1_bgimage.src, widget.bottom1_headingtype, widget.bottom1_headingtext, widget.bottom1_headingcolor, widget.bottom1_bodytext, widget.bottom1_bodycolor, widget.bottom1_textalign,
+				widget.link1_url, widget.link1_typetop, widget.link1_typebottom,
+				widget.top1_videomp4, widget.top1_videowebm, widget.bottom1_videomp4, widget.bottom1_videowebm
+			) }}
+		{% endif %}
+		{% if widget.section_boxsizing == "medium-6" or widget.section_boxsizing == "medium-4" or widget.section_boxsizing == "medium-3 small-6" %}
+			{{ ContentBox(
+				widget.top2_bgcolor, widget.top2_bgimage.src, widget.top2_headingtype, widget.top2_headingtext, widget.top2_headingcolor, widget.top2_bodytext, widget.top2_bodycolor, widget.top2_textalign,
+				widget.bottom2_bgcolor, widget.bottom2_bgimage.src, widget.bottom2_headingtype, widget.bottom2_headingtext, widget.bottom2_headingcolor, widget.bottom2_bodytext, widget.bottom2_bodycolor, widget.bottom2_textalign,
+				widget.link2_url, widget.link2_typetop, widget.link2_typebottom,
+				widget.top2_videomp4, widget.top2_videowebm, widget.bottom2_videomp4, widget.bottom2_videowebm
+			) }}
+		{% endif %}
+		{% if widget.section_boxsizing == "medium-4" or widget.section_boxsizing == "medium-3 small-6" %}
+			{{ ContentBox(
+				widget.top3_bgcolor, widget.top3_bgimage.src, widget.top3_headingtype, widget.top3_headingtext, widget.top3_headingcolor, widget.top3_bodytext, widget.top3_bodycolor, widget.top3_textalign,
+				widget.bottom3_bgcolor, widget.bottom3_bgimage.src, widget.bottom3_headingtype, widget.bottom3_headingtext, widget.bottom3_headingcolor, widget.bottom3_bodytext, widget.bottom3_bodycolor, widget.bottom3_textalign,
+				widget.link3_url, widget.link3_typetop, widget.link3_typebottom,
+				widget.top3_videomp4, widget.top3_videowebm, widget.bottom3_videomp4, widget.bottom3_videowebm
+			) }}
+		{% endif %}
+		{% if widget.section_boxsizing == "medium-3 small-6" %}
+			{{ ContentBox(
+				widget.top4_bgcolor, widget.top4_bgimage.src, widget.top4_headingtype, widget.top4_headingtext, widget.top4_headingcolor, widget.top4_bodytext, widget.top4_bodycolor, widget.top4_textalign,
+				widget.bottom4_bgcolor, widget.bottom4_bgimage.src, widget.bottom4_headingtype, widget.bottom4_headingtext, widget.bottom4_headingcolor, widget.bottom4_bodytext, widget.bottom4_bodycolor, widget.bottom4_textalign,
+				widget.link4_url, widget.link4_typetop, widget.link4_typebottom,
+				widget.top4_videomp4, widget.top4_videowebm, widget.bottom4_videomp4, widget.bottom4_videowebm
+			) }}
+		{% endif %}
+	</div>
+</section>

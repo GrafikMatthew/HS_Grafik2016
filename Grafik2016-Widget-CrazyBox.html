@@ -1,0 +1,24 @@
+<!--
+
+.o8888 8888o. .o88o. 888888 88  88    8888o. .o88o. 88  88
+88     88  88 88  88    .8' 88  88    88  88 88  88 '8..8'
+88     8888Y' 888888   oY   'Y8888    8888Y' 88  88  '88' 
+88     88  88 88  88 .8'        88    88  88 88  88 .8''8.
+'Y8888 88  88 88  88 888888 8888Y'    8888Y' 'Y88Y' 88  88
+
+-->
+<section id="{{ widget.section_customid }}" class="Theme-Widget Theme-CrazyBox {{ widget.section_customclasses }}" style="{% if widget.section_bgstyle == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}">
+	<div class="row Theme-Interior" style="{% if widget.section_bgstyle == 'box' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}">
+		<div class="PaddingBox" style="{% if widget.section_edgeheight %}padding:{{ widget.section_edgeheight }} 0;{% endif %}">
+			<div class="AccentBox {{ widget.section_accentoffset }} {{ widget.section_accentwidth }}" style="background:{{ widget.section_accentcolor }} url('{{ widget.section_accentimage.src }}') no-repeat 50% 50%; background-size: cover;"></div>
+			<div class="FlexBox-Parent">
+				<div class="FlexBox-Left {{ widget.left_boxwidth }} column" style="{% if widget.section_boxheight %}padding-bottom:{{ widget.section_boxheight }};{% endif %}background:{{ widget.left_boxcolor }} url('{{ widget.left_bgimage.src }}') no-repeat 50% 50%;background-size:cover;">
+					<div class="Flex-Container {{ widget.left_alignment }}"><div class="ContentBox Flex-Item {{ widget.left_contentwidth }}">{{ widget.left_content }}</div></div>
+				</div>
+				<div class="FlexBox-Right {{ widget.right_boxwidth }} column" style="{% if widget.section_boxheight %}padding-bottom:{{ widget.section_boxheight }};{% endif %}background:{{ widget.right_boxcolor }} url('{{ widget.right_bgimage.src }}') no-repeat 50% 50%;background-size:cover;">
+					<div class="Flex-Container {{ widget.right_alignment }}"><div class="ContentBox Flex-Item {{ widget.right_contentwidth }}">{{ widget.right_content }}</div></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

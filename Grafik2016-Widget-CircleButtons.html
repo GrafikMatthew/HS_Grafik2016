@@ -1,0 +1,27 @@
+<!--
+
+.o8888 88 8888o. .o8888 88     888888    8888o. 88  88 888888 888888 .o88o. 8888o. .o8888
+88     88 88  88 88     88     88        88  88 88  88   88     88   88  88 88  88 88    
+88     88 8888Y' 88     88     8888      8888Y' 88  88   88     88   88  88 88  88 'Y88o.
+88     88 88  88 88     88     88        88  88 88  88   88     88   88  88 88  88     88
+'Y8888 88 88  88 'Y8888 888888 888888    8888Y' 'Y88Y'   88     88   'Y88Y' 88  88 8888Y'
+
+-->
+{% set custom_class = widget.custom_class ? ' {{ widget.custom_class }}' : '' %}
+{% set custom_id = widget.custom_id ? ' id="{{ widget.custom_id }}"' : '' %}
+{% set bg_color = widget.section_bgcolor ? "background-color:{{ widget.section_bgcolor }};" : "" %}
+{% set bg_image = widget.section_bgimage.src ? "background-image:url('{{ widget.section_bgimage.src }}');background-repeat:no-repeat;background-position:50% 50%;background-size:cover;" : "" %}
+{% set row_styles = widget.section_bgtype == "row" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
+{% set box_styles = widget.section_bgtype == "box" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
+{% set offset_options = ["", "large-offset-5", "large-offset-4", "large-offset-3", "large-offset-2", "large-offset-1"] %}
+<section class="Theme-Widget Theme-CircleButtons{{ custom_class }}"{{ custom_id }}{{ row_styles }}>
+	<div class="row Theme-Interior"{{ box_styles }}>
+		{% if widget.button_count >= 1 %}<div class="{{ offset_options[widget.button_count] }} medium-2 column"><div class="CircleButton"><a href="{{ widget.button_1_url }}" class="CircleButton-Interior Flex-Container"><span class="Flex-Item Flex-Container"><span class="Flex-Item">{{ widget.button_1_text }}</span></span></a></div></div>{% endif %}
+		{% if widget.button_count >= 2 %}<div class="medium-2 column"><div class="CircleButton"><a href="{{ widget.button_2_url }}" class="CircleButton-Interior Flex-Container"><span class="Flex-Item Flex-Container"><span class="Flex-Item">{{ widget.button_2_text }}</span></span></a></div></div>{% endif %}
+		{% if widget.button_count >= 3 %}<div class="medium-2 column"><div class="CircleButton"><a href="{{ widget.button_3_url }}" class="CircleButton-Interior Flex-Container"><span class="Flex-Item Flex-Container"><span class="Flex-Item">{{ widget.button_3_text }}</span></span></a></div></div>{% endif %}
+		{% if widget.button_count >= 4 %}<div class="medium-2 column"><div class="CircleButton"><a href="{{ widget.button_4_url }}" class="CircleButton-Interior Flex-Container"><span class="Flex-Item Flex-Container"><span class="Flex-Item">{{ widget.button_4_text }}</span></span></a></div></div>{% endif %}
+		{% if widget.button_count >= 5 %}<div class="medium-2 column"><div class="CircleButton"><a href="{{ widget.button_5_url }}" class="CircleButton-Interior Flex-Container"><span class="Flex-Item Flex-Container"><span class="Flex-Item">{{ widget.button_5_text }}</span></span></a></div></div>{% endif %}
+		{% if widget.button_count >= 6 %}<div class="medium-2 column"><div class="CircleButton"><a href="{{ widget.button_6_url }}" class="CircleButton-Interior Flex-Container"><span class="Flex-Item Flex-Container"><span class="Flex-Item">{{ widget.button_6_text }}</span></span></a></div></div>{% endif %}
+		<div></div>
+	</div>
+</section>

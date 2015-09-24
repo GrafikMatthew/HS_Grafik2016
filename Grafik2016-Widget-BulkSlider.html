@@ -1,0 +1,32 @@
+<!--
+
+8888o. 88  88 88     88  88    .o8888 88     88 8888o. 888888 8888o.
+88  88 88  88 88     88 .8'    88     88     88 88  88 88     88  88
+8888Y' 88  88 88     8888'     'Y88o. 88     88 88  88 8888   8888Y'
+88  88 88  88 88     88 '8.        88 88     88 88  88 88     88  88
+8888Y' 'Y88Y' 888888 88  88    8888Y' 888888 88 8888Y' 888888 88  88
+
+-->
+{% macro OrbitSlide(slide_orbitid, slide_image) %}
+	<li class="Slide" data-orbit-slide="{{ slide_orbitid }}">
+		<div class="SlideLayers">
+			<div class="Layer Media" style="background: url('{{ slide_image }}') no-repeat 50% 50%; background-size: contain;"></div>
+		</div>
+	</li>
+{% endmacro %}
+<section id="{{ widget.section_customid }}" class="Theme-Widget Theme-BulkSlider {{ widget.section_customclasses }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%;{% endif %}">
+	<div class="{% if widget.section_bgtype == 'box' %}row Theme-Interior{% endif %}" style="{% if widget.section_bgtype == 'box' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%;{% endif %}">
+		<div class="{{ widget.section_navdots }}">
+			{% set MediaAssets = widget.media_assetlist|split(';') %}
+			{% if widget.media_assetlist %}
+				{% set MediaIndex = 0 %}
+				<ul class="Slides" data-orbit style="{% if widget.section_height %}padding-bottom:{{ widget.section_height }}{% endif %};">
+					{% for MediaAsset in MediaAssets %}
+						{{ OrbitSlide(["Slide", MediaIndex]|join, MediaAsset) }}
+						{% set MediaIndex = MediaIndex + 1 %}
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+	</div>
+</section>

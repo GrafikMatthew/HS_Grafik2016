@@ -1,0 +1,35 @@
+<!--
+
+8888o. 888888 .o8888 888888 8888o. 888888    8888o. .o88o. .o8888 888888 .o8888
+88  88 88     88     88     88  88   88      88  88 88  88 88       88   88    
+8888Y' 8888   88     8888   88  88   88      8888Y' 88  88 'Y88o.   88   'Y88o.
+88  88 88     88     88     88  88   88      88     88  88     88   88       88
+88  88 888888 'Y8888 888888 88  88   88      88     'Y88Y' 8888Y'   88   8888Y'
+
+-->
+<section id="{{ widget.section_customid }}" class="Theme-Widget Theme-RecentPosts {{ widget.section_customclasses }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%;background-size: cover;{% endif %}">
+	<div class="row Theme-Interior" style="{% if widget.section_bgtype == 'box' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%;background-size: cover;{% endif %}">
+		{% set object_order = [0, 1, 2, 3] %}
+		{% set posts = blog_recent_posts(widget.section_blogname, widget.blog_postcount) %}
+		<div class="Posts">
+			{% for post in posts %}
+				{% set slug_split = post.absolute_url|split('/') %}
+				<div class="large-3 column Post" data-utcpublish="{{ post.publish_date }}" data-localpublish="{{ post.publish_date_localized }}" data-slug="{{ slug_split|last }}">
+					<a href="{{ post.absolute_url }}">
+						<div class="Image" style="{% if post.featured_image %}background: url('{{ post.featured_image }}') no-repeat 50% 50%;{% endif %}"></div>
+						<div class="Info">
+							<div class="Flex-Container Flex-Top Flex-Left Interior">
+								<p class="Flex-Item Date">{{ post.publish_date_localized }}</p>
+								<p class="Flex-Item Name">{{ post.name }}</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			{% endfor %}
+			<div></div>
+		</div>
+		{% if widget.veiw_blog %}
+			<div class="More"><a href="#"><span>View Blog</span></a></div>
+		{% endif %}
+	</div>
+</section>

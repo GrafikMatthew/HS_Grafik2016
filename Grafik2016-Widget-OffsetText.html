@@ -1,0 +1,19 @@
+<!--
+
+.o88o. 888888 888888 .o8888 888888 888888    888888 888888 88  88 888888
+88  88 88     88     88     88       88        88   88     '8..8'   88  
+88  88 8888   8888   'Y88o. 8888     88        88   8888    '88'    88  
+88  88 88     88         88 88       88        88   88     .8''8.   88  
+'Y88Y' 88     88     8888Y' 888888   88        88   888888 88  88   88  
+
+-->
+{% set Section_PaddingTop = widget.section_paddingtop ? 'padding-top:{{ widget.section_paddingtop }};' : '' %}
+{% set Section_PaddingBottom = widget.section_paddingbottom ? 'padding-bottom:{{ widget.section_paddingbottom }};' : '' %}
+{% set Section_Background = "background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size:cover;" %}
+{% set Text_Offset = "{{ widget.text_offsetmobile }} {{ widget.text_offsettablet }} {{ widget.text_offsetdesktop }}" %}
+{% set Text_Width = "{{ widget.text_widthmobile }} {{ widget.text_widthtablet }} {{ widget.text_widthdesktop }}" %}
+<section id="{{ widget.section_customid }}" class="Theme-Widget Theme-OffsetText {{ widget.section_customclasses }}">
+	<div class="{% if widget.section_bgtype == 'box' %}row Theme-Interior{% endif %}" style="{{ Section_PaddingTop }} {{ Section_PaddingBottom }} {{ Section_Background }}">
+		<div class="{{ Text_Offset }} {{ Text_Width }}">{{ widget.text_content }}</div>
+	</div>
+</section>

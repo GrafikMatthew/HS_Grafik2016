@@ -1,0 +1,75 @@
+<!--
+
+88     .o88o. 8888o. .o8888 888888    .o8888 .o88o. 8888o. 888888 888888 8888o. 888888    8888o. .o88o. 88  88 888888 .o8888
+88     88  88 88  88 88     88        88     88  88 88  88   88   88     88  88   88      88  88 88  88 '8..8' 88     88    
+88     888888 8888Y' 88  88 8888      88     88  88 88  88   88   8888   88  88   88      8888Y' 88  88  '88'  8888   'Y88o.
+88     88  88 88  88 88  88 88        88     88  88 88  88   88   88     88  88   88      88  88 88  88 .8''8. 88         88
+888888 88  88 88  88 'Y8888 888888    'Y8888 'Y88Y' 88  88   88   888888 88  88   88      8888Y' 'Y88Y' 88  88 888888 8888Y'
+
+-->
+{% macro LargeContentBox(behavior, customheight, bgcolor, bgimage, headingtext, headingtype, bodytext, bodycolor, bodytype, bodywidth, bodyoffset, buttontext, buttontype, linkurl, linktype, alignment, videomp4, videowebm, autoplay, loop) %}
+	{% if linktype == "tile" %}<a href="{{ linkurl }}">{% endif %}
+		<div class="medium-6 column">
+			<div class="Tile {{ behavior }}" style="{% if behavior == 'Custom' %}height:{{ customheight }};{% endif %}background:{{ bgcolor }} url('{{ bgimage }}') no-repeat 50% 50%;background-size:cover;">
+				{% if videowebm or videomp4 %}
+					<video class="Tile-Video" poster="{% if widget.left_bgimage.src %}{{ widget.left_bgimage.src }}{% endif %}" {{ autoplay }} {{ loop }} muted>
+						{% if videowebm %}<source src="{{ videowebm }}" type="video/webm">{% endif %}
+						{% if videomp4 %}<source src="{{ videomp4 }}" type="video/mp4">{% endif %}
+					</video>
+				{% endif %}
+				<div class="Tile-Interior Flex-Container {{ alignment }}">
+					<div class="Flex-Item {{ bodyoffset }} {{ bodywidth }}">
+						{% if headingtext and headingtype != "off" %}
+							{% if linktype == "heading" %}<a href="{{ linkurl }}">{% endif %}
+							<{{ headingtype }} class="Heading" style="{% if bodycolor %}color:{{ bodycolor }};{% endif %}">{{ headingtext }}</{{ headingtype }}>
+							{% if linktype == "heading" %}</a>{% endif %}
+						{% endif %}
+						{% if bodytext and bodytype != "off" %}
+							<div class="Body" style="{% if bodycolor %}color:{{ bodycolor }};{% endif %}">{{ bodytext }}</div>
+						{% endif %}
+						{% if buttontype != "off" %}
+							{% if linktype == "button" %}<a href="{{ linkurl }}">{% endif %}
+							<div class="Button"><span class="{{ buttontype }}">{{ buttontext }}</span></div>
+							{% if linktype == "button" %}</a>{% endif %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	{% if linktype == "tile" %}</a>{% endif %}
+{% endmacro %}
+<section id="{{ widget.custom_id }}" class="Theme-Widget Theme-LargeContentBoxes {{ widget.custom_class }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+	<div class="row Theme-Interior" style="{% if widget.section_bgtype == 'box' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+		{{ LargeContentBox(
+			widget.tile_behavior, widget.section_customtileheight,
+			widget.left_bgcolor, widget.left_bgimage.src,
+			widget.left_headingtext, widget.left_headingtype,
+			widget.left_bodytext, widget.left_bodycolor, widget.left_bodytype,
+			[widget.left_bodywidth, widget.left_bodywidth_tablet, widget.left_bodywidth_desktop]|join(" "),
+			[widget.left_bodyoffset, widget.left_bodyoffset_tablet, widget.left_bodyoffset_desktop]|join(" "),
+			widget.left_buttontext, widget.left_buttontype,
+			widget.left_linkurl, widget.left_linktype,
+			widget.left_alignment,
+			widget.left_videomp4, widget.left_videowebm,
+			widget.left_videoautoplay ? "autoplay" : "",
+			widget.left_videolooping ? "loop" : ""
+		) }}
+		{% if widget.section_carettype != "off" and widget.section_caretcolor %}
+			<div class="{{ widget.section_carettype }}" style="background-color:{{ widget.section_caretcolor }};"></div>
+		{% endif %}
+		{{ LargeContentBox(
+			widget.tile_behavior, widget.section_customtileheight,
+			widget.right_bgcolor, widget.right_bgimage.src,
+			widget.right_headingtext, widget.right_headingtype,
+			widget.right_bodytext, widget.right_bodycolor, widget.right_bodytype,
+			[widget.right_bodywidth, widget.right_bodywidth_tablet, widget.right_bodywidth_desktop]|join(" "),
+			[widget.right_bodyoffset, widget.right_bodyoffset_tablet, widget.right_bodyoffset_desktop]|join(" "),
+			widget.right_buttontext, widget.right_buttontype,
+			widget.right_linkurl, widget.right_linktype,
+			widget.right_alignment,
+			widget.right_videomp4, widget.right_videowebm,
+			widget.right_videoautoplay ? "autoplay" : "",
+			widget.right_videolooping ? "loop" : ""
+		) }}
+	</div>
+</section>

@@ -1,0 +1,48 @@
+<!--
+
+.o8888 88     88 8888o. 888888 8888o.
+88     88     88 88  88 88     88  88
+'Y88o. 88     88 88  88 8888   8888Y'
+    88 88     88 88  88 88     88  88
+8888Y' 888888 88 8888Y' 888888 88  88
+
+-->
+{% macro OrbitSlide(slide_orbitid, slide_color, slide_image, slide_videowebm, slide_videomp4, slide_bodyalign, slide_bodyoffset, slide_bodywidth, slide_headingtype, slide_headingcolor, slide_headingtext, slide_contentcolor, slide_contenttext) %}
+	<li class="Slide" data-orbit-slide="{{ slide_orbitid }}">
+		<div class="SlideLayers">
+			<div class="Layer Color" style="{% if slide_color %}background:{{ slide_color }};{% endif %}"></div>
+			<div class="Layer Media">
+				{% if slide_videowebm or slide_videomp4 %}
+					<video poster="{% if slide_image.src %}{{ slide_image.src }}{% endif %}" autoplay loop muted>
+						{% if slide_videowebm %}<source src="{{ slide_videowebm }}" type="video/webm">{% endif %}
+						{% if slide_videomp4 %}<source src="{{ slide_videomp4 }}" type="video/mp4">{% endif %}
+					</video>
+				{% else %}
+					{% if slide_image.src %}<img src="{{ slide_image.src }}" width="{{ slide_image.width }}" height="{{ slide_image.height }}" alt="{{ slide_image.alt }}"/>{% endif %}
+				{% endif %}
+			</div>
+			<div class="Layer Text Flex-Container {{ slide_bodyalign }}">
+				<div class="{{ slide_bodyoffset }} {{ slide_bodywidth }} Flex-Item">
+					{% if slide_headingtype != "off" and slide_headingtext %}<{{ slide_headingtype }} class="Heading" style="{% if slide_headingcolor %}color:{{ slide_headingcolor }};{% endif %}">{{ slide_headingtext }}</{{ slide_headingtype }}>{% endif %}
+					{% if slide_contenttext %}<div class="Body" style="{% if slide_contentcolor %}color:{{ slide_contentcolor }};{% endif %}">{{ slide_contenttext }}</div>{% endif %}
+				</div>
+			</div>
+		</div>
+	</li>
+{% endmacro %}
+<section id="{{ widget.custom_id }}" class="Theme-Widget Theme-Slider {{ widget.custom_class }}" style="{% if widget.background_style == 'row' %}background:{{ widget.background_color }} url('{{ widget.background_image.src }}') no-repeat 50% 50%;{% endif %}">
+	<div class="{% if widget.background_style == 'box' %}row Theme-Interior{% endif %}" style="{% if widget.background_style == 'box' %}background:{{ widget.background_color }} url('{{ widget.background_image.src }}') no-repeat 50% 50%;{% endif %}">
+		<div class="{{ widget.navigation_dots }}">
+			{% if widget.slide01_enabled or widget.slide02_enabled or widget.slide03_enabled or widget.slide04_enabled or widget.slide05_enabled or widget.slide06_enabled %}
+				<ul class="Slides" data-orbit style="{% if widget.section_height %}padding-bottom:{{ widget.section_height }}{% endif %};">
+					{% if widget.slide01_enabled %}{{ OrbitSlide("Slide01", widget.slide01_bgcolor, widget.slide01_bgimage, widget.slide01_videowebm, widget.slide01_videomp4, widget.slide01_alignment, widget.slide01_textoffset, widget.slide01_textwidth, widget.slide01_headingtype, widget.slide01_headingcolor, widget.slide01_headingtext, widget.slide01_contentcolor, widget.slide01_contenttext) }}{% endif %}
+					{% if widget.slide02_enabled %}{{ OrbitSlide("Slide02", widget.slide02_bgcolor, widget.slide02_bgimage, widget.slide02_videowebm, widget.slide02_videomp4, widget.slide02_alignment, widget.slide02_textoffset, widget.slide02_textwidth, widget.slide02_headingtype, widget.slide02_headingcolor, widget.slide02_headingtext, widget.slide02_contentcolor, widget.slide02_contenttext) }}{% endif %}
+					{% if widget.slide03_enabled %}{{ OrbitSlide("Slide03", widget.slide03_bgcolor, widget.slide03_bgimage, widget.slide03_videowebm, widget.slide03_videomp4, widget.slide03_alignment, widget.slide03_textoffset, widget.slide03_textwidth, widget.slide03_headingtype, widget.slide03_headingcolor, widget.slide03_headingtext, widget.slide03_contentcolor, widget.slide03_contenttext) }}{% endif %}
+					{% if widget.slide04_enabled %}{{ OrbitSlide("Slide04", widget.slide04_bgcolor, widget.slide04_bgimage, widget.slide04_videowebm, widget.slide04_videomp4, widget.slide04_alignment, widget.slide04_textoffset, widget.slide04_textwidth, widget.slide04_headingtype, widget.slide04_headingcolor, widget.slide04_headingtext, widget.slide04_contentcolor, widget.slide04_contenttext) }}{% endif %}
+					{% if widget.slide05_enabled %}{{ OrbitSlide("Slide05", widget.slide05_bgcolor, widget.slide05_bgimage, widget.slide05_videowebm, widget.slide05_videomp4, widget.slide05_alignment, widget.slide05_textoffset, widget.slide05_textwidth, widget.slide05_headingtype, widget.slide05_headingcolor, widget.slide05_headingtext, widget.slide05_contentcolor, widget.slide05_contenttext) }}{% endif %}
+					{% if widget.slide06_enabled %}{{ OrbitSlide("Slide06", widget.slide06_bgcolor, widget.slide06_bgimage, widget.slide06_videowebm, widget.slide06_videomp4, widget.slide06_alignment, widget.slide06_textoffset, widget.slide06_textwidth, widget.slide06_headingtype, widget.slide06_headingcolor, widget.slide06_headingtext, widget.slide06_contentcolor, widget.slide06_contenttext) }}{% endif %}
+				</ul>
+			{% endif %}
+		</div>
+	</div>
+</section>

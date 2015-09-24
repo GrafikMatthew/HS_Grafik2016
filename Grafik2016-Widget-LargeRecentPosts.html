@@ -1,0 +1,43 @@
+<!--
+
+88     .o88o. 8888o. .o8888 888888    8888o. 888888 .o8888 888888 8888o. 888888    8888o. .o88o. .o8888 888888 .o8888
+88     88  88 88  88 88     88        88  88 88     88     88     88  88   88      88  88 88  88 88       88   88    
+88     888888 8888Y' 88  88 8888      8888Y' 8888   88     8888   88  88   88      8888Y' 88  88 'Y88o.   88   'Y88o.
+88     88  88 88  88 88  88 88        88  88 88     88     88     88  88   88      88     88  88     88   88       88
+888888 88  88 88  88 'Y8888 888888    88  88 888888 'Y8888 888888 88  88   88      88     'Y88Y' 8888Y'   88   8888Y'
+
+-->
+{% set custom_class = widget.custom_class ? ' {{ widget.custom_class }}' : '' %}
+{% set custom_id = widget.custom_id ? ' id="{{ widget.custom_id }}"' : '' %}
+{% set bg_color = widget.section_bgcolor ? "background-color:{{ widget.section_bgcolor }};" : "" %}
+{% set bg_image = widget.section_bgimage.src ? "background-image:url('{{ widget.section_bgimage.src }}');background-repeat:no-repeat;background-position:50% 50%;background-size:cover;" : "" %}
+{% set row_styles = widget.section_bgtype == "row" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
+{% set box_styles = widget.section_bgtype == "box" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
+<section class="Theme-Widget Theme-LargeRecentPosts{{ custom_class }}"{{ custom_id }}{{ row_styles }}>
+	<div class="row Theme-Interior"{{ box_styles }}>
+		{% set object_order = [0, 1, 2, 3] %}
+		{% set posts = blog_recent_posts(widget.use_blog, widget.post_count) %}
+		{% for post in posts %}
+			{% set slug_split = post.absolute_url|split('/') %}
+			<div class="large-3 column Post" data-utcpublish="{{ post.publish_date }}" data-localpublish="{{ post.publish_date_localized }}" data-slug="{{ slug_split|last }}">
+				<a href="{{ post.absolute_url }}">
+					{% for order in object_order %}
+						{% if widget.image_placement == order %}
+							{% if post.featured_image %}
+								<span class="Preview"><img src="{{ post.featured_image }}" alt="{{ post.name }}" class="Image" /></span>
+							{% else %}
+								<span class="Placeholder"></span>
+							{% endif %}
+						{% endif %}
+						{% if widget.title_placement == order %}<span class="H">{{ post.name }}</span>{% endif %}
+						{% if widget.date_placement == order %}<span class="Date">{{ post.publish_date_localized }}</span>{% endif %}
+						{% if widget.author_placement == order %}<span class="Author">{{ post.author_name }}</span>{% endif %}
+					{% endfor %}
+				</a>
+			</div>
+		{% endfor %}
+		{% if widget.veiw_blog %}
+			<div class="More"><a href="#"><span>View Blog</span></a></div>
+		{% endif %}
+	</div>
+</section>

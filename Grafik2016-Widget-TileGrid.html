@@ -1,0 +1,99 @@
+<!--
+
+888888 88 88     888888    .o8888 8888o. 88 8888o.
+  88   88 88     88        88     88  88 88 88  88
+  88   88 88     8888      88  88 8888Y' 88 88  88
+  88   88 88     88        88  88 88  88 88 88  88
+  88   88 888888 888888    'Y8888 88  88 88 8888Y'
+
+-->
+{% macro GridTile(tile_size, tile_linkurl, tile_linktype, fx_hover, fx_hovercolor, bg_color, bg_image, alignment, text_color, text_title, text_titletype, text_body, button_text, button_type) %}
+	<div class="{{ tile_size }} column">
+		{% if tile_linkurl and tile_linktype == "tile" %}<a href="{{ tile_linkurl }}">{% endif %}
+		<div class="GridTile{% if fx_hover %} Hover-Effect{% endif %}">
+			{% if bg_color %}<div class="Background-Color" style="background:{{ bg_color }};"></div>{% endif %}
+			{% if bg_image %}<div class="Background-Image" style="background:url({{ bg_image }}) no-repeat 50% 50%;background-size:cover;"></div>{% endif %}
+			<div class="Cover" style="{% if fx_hovercolor %}background:{{ fx_hovercolor }}{% endif %}"></div>
+			<div class="Content Flex-Container {{ alignment }}" style="{% if text_color %}color:{{ text_color }};{% endif %}">
+				<div class="Flex-Item">
+					{% if text_title and text_titletype != "off" %}
+						{% if tile_linkurl and tile_linktype == "title" %}<a href="{{ tile_linkurl }}">{% endif %}
+						<{{ text_titletype }} class="Title">{{ text_title }}</{{ text_titletype }}>
+						{% if tile_linkurl and tile_linktype == "title" %}</a>{% endif %}
+					{% endif %}
+					{% if text_body %}<div class="Body">{{ text_body }}</div>{% endif %}
+					{% if button_text and button_type != "off" %}
+						{% if tile_linkurl and tile_linktype == "button" %}<a href="{{ tile_linkurl }}">{% endif %}
+						<div class="Button {{ button_type }}"><span>{{ button_text }}</span></div>
+						{% if tile_linkurl and tile_linktype == "button" %}</a>{% endif %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{% if tile_linkurl and tile_linktype == "tile" %}</a>{% endif %}
+	</div>
+{% endmacro %}
+{% macro GridFeature(gf_containersize,gf_heading,gf_body,gf_quote,gf_cite) %}
+	<div class="{{ gf_containersize }} column" style="{% if widget.section_featuredcolor %}background:{{ widget.section_featuredcolor }};{% endif %}">
+		<div class="GridFeatured {{ widget.section_featuredtype }}">
+			{% if widget.section_featuredmediatype == "image" %}
+				<div class="FeaturedImage" style="background:url('{{ widget.section_featuredimage.src }}') no-repeat 50% 50%;background-size:cover;"></div>
+			{% elif widget.section_featuredmediatype == "video" %}
+				<video class="FeaturedVideo"{% if widget.section_featuredimage.src %} cover="{{ widget.section_featuredimage.src }}"{% endif %} autoplay loop muted>
+					{% if widget.section_featuredwebm %}<source src="{{ widget.section_featuredwebm }}" type="video/webm">{% endif %}
+					{% if widget.section_featuredmp4 %}<source src="{{ widget.section_featuredmp4 }}" type="video/mp4">{% endif %}
+				</video>
+			{% endif %}
+			{% if widget.section_featuredheading or widget.section_featuredbody or widget.section_featuredquote or widget.section_featuredcite %}
+				<div class="TextOverlay Flex-Container">
+					{% if widget.section_featuredheading or widget.section_featuredbody %}
+						<div class="FeaturedText Flex-Item" style="{% if gf_textcolor %}color:{{ gf_textcolor }};{% endif %}">
+							{% if widget.section_featuredheading %}<{{ widget.section_featuredheadingtype }} class="Heading" style="{% if widget.section_featuredheadingcolor %}color:{{ widget.section_featuredheadingcolor }};{% endif %}">{{ widget.section_featuredheading }}</{{ widget.section_featuredheadingtype }}>{% endif %}
+							{% if widget.section_featuredbody %}<div class="Body" style="{% if widget.section_featuredbodycolor %}color:{{ widget.section_featuredbodycolor }};{% endif %}">{{ widget.section_featuredbody }}</div>{% endif %}
+						</div>
+					{% endif %}
+					{% if widget.section_featuredquote or widget.section_featuredcite %}
+						<div class="FeaturedQuote Flex-Item" style="{% if gf_textcolor %}color:{{ gf_textcolor }};{% endif %}">
+							{% if widget.section_featuredquote %}<blockquote style="{% if widget.section_featuredquotecolor %}color:{{ widget.section_featuredquotecolor }};{% endif %}">{{ widget.section_featuredquote }}</blockquote>{% endif %}
+							{% if widget.section_featuredcite %}<cite style="{% if widget.section_featuredcitecolor %}color:{{ widget.section_featuredcitecolor }};{% endif %}">{{ widget.section_featuredcite }}</cite>{% endif %}
+						</div>
+					{% endif %}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endmacro %}
+{% if widget.section_featuredtype == "Left-Tall" or widget.section_featuredtype == "Right-Tall" %}
+	{% set featured_containersize = "large-8" %}
+	{% set featured_mediasize = "large-12" %}
+	{% set tile_containersize = "large-4" %}
+	{% set tile_blocksize = "large-6" %}
+{% elif widget.section_featuredtype == "Left-Wide" or widget.section_featuredtype == "Right-Wide" %}
+	{% set featured_containersize = "large-6" %}
+	{% set featured_mediasize = "large-12" %}
+	{% set tile_containersize = "large-6" %}
+	{% set tile_blocksize = "large-4" %}
+{% else %}
+	{% set featured_containersize = "" %}
+	{% set featured_mediasize = "" %}
+	{% set tile_containersize = "large-12" %}
+	{% set tile_blocksize = widget.section_normaltype %}
+{% endif %}
+<section id="{{ widget.section_customid }}" class="Theme-Widget Theme-TileGrid {{ widget.section_customclasses }}" style="{% if widget.section_displaytype == "row" %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+	<div class="row Theme-Interior" style="{% if widget.section_displaytype == "box" %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+		{% if (widget.section_featuredtype == "Left-Tall" or widget.section_featuredtype == "Left-Wide") and widget.section_featuredmediatype != "off" %}
+			{{ GridFeature(featured_containersize) }}
+		{% endif %}
+		<div class="{{ tile_containersize }} column GridTiles">
+			{{ GridTile(tile_blocksize,widget.tile1_linkurl,widget.tile1_linktype,widget.tile1_hovereffect,widget.tile1_hovercolor,widget.tile1_bgcolor,widget.tile1_bgimage.src,widget.tile1_alignment,widget.tile1_textcolor,widget.tile1_titletext,widget.tile1_titletype,widget.tile1_bodytext,widget.tile1_buttontext,widget.tile1_buttontype) }}
+			{{ GridTile(tile_blocksize,widget.tile2_linkurl,widget.tile2_linktype,widget.tile2_hovereffect,widget.tile2_hovercolor,widget.tile2_bgcolor,widget.tile2_bgimage.src,widget.tile2_alignment,widget.tile2_textcolor,widget.tile2_titletext,widget.tile2_titletype,widget.tile2_bodytext,widget.tile2_buttontext,widget.tile2_buttontype) }}
+			{{ GridTile(tile_blocksize,widget.tile3_linkurl,widget.tile3_linktype,widget.tile3_hovereffect,widget.tile3_hovercolor,widget.tile3_bgcolor,widget.tile3_bgimage.src,widget.tile3_alignment,widget.tile3_textcolor,widget.tile3_titletext,widget.tile3_titletype,widget.tile3_bodytext,widget.tile3_buttontext,widget.tile3_buttontype) }}
+			{{ GridTile(tile_blocksize,widget.tile4_linkurl,widget.tile4_linktype,widget.tile4_hovereffect,widget.tile4_hovercolor,widget.tile4_bgcolor,widget.tile4_bgimage.src,widget.tile4_alignment,widget.tile4_textcolor,widget.tile4_titletext,widget.tile4_titletype,widget.tile4_bodytext,widget.tile4_buttontext,widget.tile4_buttontype) }}
+			{{ GridTile(tile_blocksize,widget.tile5_linkurl,widget.tile5_linktype,widget.tile5_hovereffect,widget.tile5_hovercolor,widget.tile5_bgcolor,widget.tile5_bgimage.src,widget.tile5_alignment,widget.tile5_textcolor,widget.tile5_titletext,widget.tile5_titletype,widget.tile5_bodytext,widget.tile5_buttontext,widget.tile5_buttontype) }}
+			{{ GridTile(tile_blocksize,widget.tile6_linkurl,widget.tile6_linktype,widget.tile6_hovereffect,widget.tile6_hovercolor,widget.tile6_bgcolor,widget.tile6_bgimage.src,widget.tile6_alignment,widget.tile6_textcolor,widget.tile6_titletext,widget.tile6_titletype,widget.tile6_bodytext,widget.tile6_buttontext,widget.tile6_buttontype) }}
+		</div>
+		{% if (widget.section_featuredtype == "Right-Tall" or widget.section_featuredtype == "Right-Wide") and widget.section_featuredmediatype != "off" %}
+			{{ GridFeature(featured_containersize) }}
+		{% endif %}
+	</div>
+</section>

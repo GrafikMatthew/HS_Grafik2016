@@ -1,0 +1,55 @@
+<!--
+
+8888o. 8888o. 888888 88  88    8888o. 888888 88  88 888888    .o88o. 88     88    
+88  88 88  88 88     88  88    88  88 88     '8..8'   88      88  88 88     88    
+8888Y' 8888Y' 8888   88  88    88  88 8888    '88'    88      888888 88     88    
+88     88  88 88     88 .8'    88  88 88     .8''8.   88      88  88 88     88    
+88     88  88 888888 888'      88  88 888888 88  88   88      88  88 888888 888888
+
+-->
+{% set custom_id = widget.custom_id ? ' id="{{ widget.custom_id }}"' : '' %}
+{% set custom_class = widget.custom_class ? ' {{ widget.custom_class }}' : '' %}
+{% set bg_color = widget.section_bgcolor ? "background-color:{{ widget.section_bgcolor }};" : "" %}
+{% set bg_image = widget.section_bgimage.src ? "background:url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%;background-size:cover;" : "" %}
+{% set row_styles = widget.background_style == "row" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
+{% set box_styles = widget.background_style == "box" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
+<section class="Theme-Widget Theme-PrevNextAll{{ custom_class }}"{{ custom_id }}{{ row_styles }}>
+	<div class="row Theme-Interior"{{ box_styles }}>
+		<div class="large-4 column">
+			<a href="{{ widget.prev_url }}" class="Link-Prev">
+				<div class="Hover-Effect">
+					{% if widget.prev_bgcolor %}<div class="Background-Color" style="background-color:{{ widget.prev_bgcolor }};"></div>{% endif %}
+					{% if widget.prev_bgimage.src %}<div class="Background-Image" style="background:url({{ widget.prev_bgimage.src }}) no-repeat 50% 50%;background-size:cover;"></div>{% endif %}
+					<div class="Cover" style="{% if widget.prev_hovercolor %}background-color:{{ widget.prev_hovercolor }}{% endif %}"></div>
+					<div class="Content Flex-Container {{ widget.prev_alignment }}" data-hovercolor="{{ widget.prev_hovercolor }}">
+						<div class="Flex-Item" style="{% if widget.prev_textcolor %}color:{{ widget.prev_textcolor }};{% endif %}">Prev</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="large-4 column">
+			<a href="{{ widget.viewall_url }}" class="Link-All">
+				<div class="Hover-Effect">
+					{% if widget.viewall_bgcolor %}<div class="Background-Color" style="background-color:{{ widget.viewall_bgcolor }};"></div>{% endif %}
+					{% if widget.viewall_bgimage.src %}<div class="Background-Image" style="background:url({{ widget.viewall_bgimage.src }}) no-repeat 50% 50%;background-size:cover;"></div>{% endif %}
+					<div class="Cover" style="{% if widget.viewall_hovercolor %}background-color:{{ widget.viewall_hovercolor }}{% endif %}"></div>
+					<div class="Content Flex-Container {{ widget.viewall_alignment }}" data-hovercolor="{{ widget.viewall_hovercolor }}">
+						<div class="Flex-Item" style="{% if widget.viewall_textcolor %}color:{{ widget.viewall_textcolor }};{% endif %}">View All</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="large-4 column end">
+			<a href="{{ widget.next_url }}" class="Link-Next">
+				<div class="Hover-Effect">
+					{% if widget.next_bgcolor %}<div class="Background-Color" style="background-color:{{ widget.next_bgcolor }};"></div>{% endif %}
+					{% if widget.next_bgimage.src %}<div class="Background-Image" style="background:url({{ widget.next_bgimage.src }}) no-repeat 50% 50%;background-size:cover;"></div>{% endif %}
+					<div class="Cover" style="{% if widget.next_hovercolor %}background-color:{{ widget.next_hovercolor }}{% endif %}"></div>
+					<div class="Content Flex-Container {{ widget.next_alignment }}" data-hovercolor="{{ widget.next_hovercolor }}">
+						<div class="Flex-Item" style="{% if widget.next_textcolor %}color:{{ widget.next_textcolor }};{% endif %}">Next</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+</section>

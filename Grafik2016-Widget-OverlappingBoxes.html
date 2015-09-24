@@ -1,0 +1,32 @@
+<!--
+
+.o88o. 88  88 888888 8888o. 88     .o88o. 8888o. 8888o. 88 8888o. .o8888    8888o. .o88o. 88  88 888888 .o8888
+88  88 88  88 88     88  88 88     88  88 88  88 88  88 88 88  88 88        88  88 88  88 '8..8' 88     88    
+88  88 88  88 8888   8888Y' 88     888888 8888Y' 8888Y' 88 88  88 88  88    8888Y' 88  88  '88'  8888   'Y88o.
+88  88 88 .8' 88     88  88 88     88  88 88     88     88 88  88 88  88    88  88 88  88 .8''8. 88         88
+'Y88Y' 888'   888888 88  88 888888 88  88 88     88     88 88  88 'Y8888    8888Y' 'Y88Y' 88  88 888888 8888Y'
+
+-->
+{% set custom_class = widget.custom_class ? ' {{ widget.custom_class }}' : '' %}
+{% set custom_id = widget.custom_id ? ' id="{{ widget.custom_id }}"' : '' %}
+{% set bg_color = widget.background_color ? "background-color:{{ widget.background_color }};" : "" %}
+{% set bg_image = widget.background_image.src ? "background-image:url('{{ widget.background_image.src }}');background-repeat:no-repeat;background-size:cover;" : "" %}
+{% set row_styles = widget.background_style == "row" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
+{% set box_styles = widget.background_style == "box" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
+<section class="Theme-Widget Theme-OverlappingBoxes{{ custom_class }}"{{ custom_id }}{{ row_styles }}>
+	<div class="row Theme-Interior"{{ box_styles }}>
+		<div class="large-6 column Background {{ widget.partial_background_alignment }}" style="{% if widget.partial_background_color %}background-color:{{ widget.partial_background_color }};{% endif %}"></div>
+		{% if widget.text_box %}
+			<div class="Content Flex-Container {{ widget.text_alignment }}" style="{{ widget.text_box_alignment }}{% if widget.text_box_color %}background-color:{{ widget.text_box_color }};{% endif %}width:{{ widget.text_box_size }};">
+				<div class="Flex-Item {{ widget.body_width }} {{ widget.body_offset }}" style="{% if widget.text_box_image.src %}background:url('{{ widget.text_box_image.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}">
+					{% if widget.heading_type != "off" %}
+						<{{ widget.heading_type }} class="Heading" style="{% if widget.heading_color %}color:{{ widget.heading_color }};{% endif %}">{{ widget.heading_text }}</{{ widget.heading_type }}>
+					{% endif %}
+					{{ widget.text_box_text }}
+				</div>
+			</div>
+		{% endif %}
+		<div class="{{ widget.media_type }}" style="{% if widget.media_image.src %}background:url('{{ widget.media_image.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}{{ widget.media_alignment }}"></div>
+		<div class="large-6 column"></div>
+	</div>
+</section>

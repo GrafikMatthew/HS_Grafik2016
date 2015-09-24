@@ -1,0 +1,21 @@
+<!--
+
+888888o. .o88o. .o8888 888888 888888 8888o.    888888 88 88     888888
+88 88 88 88  88 88       88   88     88  88      88   88 88     88    
+88 88 88 888888 'Y88o.   88   8888   8888Y'      88   88 88     8888  
+88 88 88 88  88     88   88   88     88  88      88   88 88     88    
+88 88 88 88  88 8888Y'   88   888888 88  88      88   88 888888 888888
+
+-->
+<div class="MasterTile {{ widget.tile_width }}" style="">
+	<div class="Interior {{ widget.tile_height }}" style="{% if widget.tile_color %}background-color:{{ widget.tile_color }};{% endif %}{% if widget.tile_height %}padding-bottom:{{ widget.tile_height }};{% endif %}">
+		{% if widget.tile_height %}
+			<div class="Layer Color"></div>
+			<div class="Layer Image"></div>
+			<div class="Layer Video"></div>
+			<div class="Layer Content"></div>
+		{% else %}
+			<div class="Content"></div>
+		{% endif %}
+	</div>
+</div>

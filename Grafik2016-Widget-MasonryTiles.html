@@ -1,0 +1,43 @@
+<!--
+
+888888o. .o88o. .o8888 .o88o. 8888o. 8888o. 88  88    888888 88 88     888888 .o8888
+88 88 88 88  88 88     88  88 88  88 88  88 88  88      88   88 88     88     88    
+88 88 88 888888 'Y88o. 88  88 88  88 8888Y' 'Y8888      88   88 88     8888   'Y88o.
+88 88 88 88  88     88 88  88 88  88 88  88     88      88   88 88     88         88
+88 88 88 88  88 8888Y' 'Y88Y' 88  88 88  88 8888Y'      88   88 888888 888888 8888Y'
+
+-->
+{% set custom_class = widget.custom_class ? ' {{ widget.custom_class }}' : '' %}
+{% set custom_id = widget.custom_id ? ' id="{{ widget.custom_id }}"' : '' %}
+{% set bg_color = widget.section_bgcolor ? "background-color:{{ widget.section_bgcolor }};" : "" %}
+{% set bg_image = widget.section_bgimage.src ? "background-image:url('{{ widget.section_bgimage.src }}');background-repeat:no-repeat;background-size:cover;background-position:50% 50%" : "" %}
+{% set row_styles = widget.section_bgtype == "row" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
+{% set box_styles = widget.section_bgtype == "box" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
+<section class="Theme-Widget Theme-MasonryTiles{{ custom_class }}"{{ custom_id }}{{ row_styles }}>
+	<div class="row Theme-Interior"{{ box_styles }}>
+		<div class="{{ widget.tile_weights }} MasonryCount-{{ widget.tile_count }}">
+			<div class="large-6 column Masonry-Left">
+				{% if ( widget.tile_count >= 1 and widget.tile_weights == "Heavy-Left" ) or ( widget.tile_count >= 2 and widget.tile_weights == "Heavy-Right" ) %}
+					<div class="MasonryTile" style="{% if widget.tile01_image.src %}background:url('{{ widget.tile01_image.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}{% if widget.tile01_color %}background-color:{{ widget.tile01_color }};{% endif %}"></div>
+				{% endif %}
+				{% if ( widget.tile_count >= 4 and widget.tile_weights == "Heavy-Left" ) or ( widget.tile_count >= 3 and widget.tile_weights == "Heavy-Right" ) %}
+					<div class="MasonryTile" style="{% if widget.tile04_image.src %}background:url('{{ widget.tile04_image.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}{% if widget.tile04_color %}background-color:{{ widget.tile04_color }};{% endif %}"></div>
+				{% endif %}
+				{% if ( widget.tile_count >= 6 and widget.tile_weights == "Heavy-Left" ) or ( widget.tile_count >= 5 and widget.tile_weights == "Heavy-Right" ) %}
+					<div class="MasonryTile" style="{% if widget.tile06_image.src %}background:url('{{ widget.tile06_image.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}{% if widget.tile06_color %}background-color:{{ widget.tile06_color }};{% endif %}"></div>
+				{% endif %}
+			</div>
+			<div class="large-6 column Masonry-Right">
+				{% if ( widget.tile_count >= 2 and widget.tile_weights == "Heavy-Left" ) or ( widget.tile_count >= 1 and widget.tile_weights == "Heavy-Right" ) %}
+					<div class="MasonryTile" style="{% if widget.tile02_image.src %}background:url('{{ widget.tile02_image.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}{% if widget.tile02_color %}background-color:{{ widget.tile02_color }};{% endif %}"></div>
+				{% endif %}
+				{% if ( widget.tile_count >= 3 and widget.tile_weights == "Heavy-Left" ) or ( widget.tile_count >= 4 and widget.tile_weights == "Heavy-Right" ) %}
+					<div class="MasonryTile" style="{% if widget.tile03_image.src %}background:url('{{ widget.tile03_image.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}{% if widget.tile03_color %}background-color:{{ widget.tile03_color }};{% endif %}"></div>
+				{% endif %}
+				{% if ( widget.tile_count >= 5 and widget.tile_weights == "Heavy-Left" ) or ( widget.tile_count >= 6 and widget.tile_weights == "Heavy-Right" ) %}
+					<div class="MasonryTile" style="{% if widget.tile05_image.src %}background:url('{{ widget.tile05_image.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}{% if widget.tile05_color %}background-color:{{ widget.tile05_color }};{% endif %}"></div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</section>

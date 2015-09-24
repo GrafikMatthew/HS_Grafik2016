@@ -1,0 +1,214 @@
+{% text "Grafik_TemplateID" label="A-00. Custom Page ID", value="", export_to_template_context="True" %}
+{% text "Grafik_TemplateClasses" label="A-01. Custom Page Classes", value="", export_to_template_context="True" %}
+
+{% boolean "Grafik_EnableFadein" label="B-00. Enable the page load fadein?", value="True", export_to_template_context="True" %}
+{% boolean "Grafik_ShareButtons" label="B-01. Display the Sharing Buttons?", value="True", export_to_template_context="True" %}
+{% boolean "Grafik_Prefooter" label="B-02. Display the Prefooter?", value="True", export_to_template_context="True" %}
+
+{% choice "Grafik_DisplayCTA" label="C-01. CTA Display Mode", value="off", choices="[[\"off\",\"Disabled\"],[1,\"Let's Get Started\"],[2,\"Careers\"],[3,\"Join the Team\"]]", export_to_template_context="True" %}
+
+{% color "Grafik_NavbarBgcolor" label="D-00. Navbar Background Color", color="#ffffff", export_to_template_context="True" %}
+{% color "Grafik_NavmenuBgcolor" label="D-01. Navmenu Background Color", color="#000000", export_to_template_context="True" %}
+{% color "Grafik_ContentBgcolor" label="D-02. Content Background Color", color="#ededed", export_to_template_context="True" %}
+{% color "Grafik_PrefooterBgcolor" label="D-03. Prefooter Background Color", color="#333333", export_to_template_context="True" %}
+{% color "Grafik_FooterBgcolor" label="D-04. Footer Background Color", color="#000000", export_to_template_context="True" %}
+
+<!doctype html>
+<html lang="en" id="{{ widget_data.Grafik_TemplateID.value }}" class="no-js {{ widget_data.Grafik_TemplateClasses.value }}">
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="author" content="{{ meta_author }}">
+		<meta name="description" content="{{ page_meta.meta_description }}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{{ page_meta.html_title }}</title>
+		{% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+
+		<link href="https://cdn2.hubspot.net/hubfs/505301/css/foundation.min.css" rel="stylesheet" />
+		<script src="https://cdn2.hubspot.net/hubfs/505301/js/vendor/modernizr.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="https://cdn2.hubspot.net/hubfs/505301/grafik2016/Grafik2016-Styles.css" />
+		
+		{{ standard_header_includes }}
+		{% style include_default_custom_css="true" %}
+
+	</head>
+	<body id="Template-Grafik2016" class="{{ builtin_body_classes }}" style="{% if widget_data.Grafik_FooterBgcolor.color %}background-color:{{ widget_data.Grafik_FooterBgcolor.color }};{% endif %}">
+
+		{% if widget_data.Grafik_EnableFadein.value %}
+			<script type="text/javascript">
+				(function($) {
+					if(typeof $ == "undefined") return false;
+					$("body").css("opacity",0);
+					$(window).on("load",function() {
+						$("body").animate({ "opacity" : 1 });
+					});
+				})(jQuery);
+			</script>
+		{% endif %}
+
+		<!-- GRAFIK2016 - TemplateHeader -->
+		<header class="Theme-TemplateFragment Theme-TemplateHeader">
+
+			<!-- GRAFIK2016 - Navbar -->
+			<section id="Grafik-Navbar" style="{% if widget_data.Grafik_NavbarBgcolor.color %}background: {{ widget_data.Grafik_NavbarBgcolor.color }};{% endif %}">
+				<div class="row Theme-Interior">
+					<div class="Branding"><a href="/"><div class="Logo"></div><div class="Mantra"><h1>Grafik</h1><h2>The Right Idea</h2></div></a></div>
+					<div class="Stack"><span></span><span></span><span></span></div>
+				</div>
+			</section>
+
+			<!-- GRAFIK2016 - Navmenu -->
+			<section id="Grafik-Navmenu" style="{% if widget_data.Grafik_NavmenuBgcolor.color %}background: {{ widget_data.Grafik_NavmenuBgcolor.color }};{% endif %}">
+				<div class="row Theme-Interior">
+					<div class="column small-offset-1 small-10 medium-5 Navigation">
+						{% menu "Grafik_NavMain" site_map_name='Grafik2016_Main', overrideable=False, root_type='site_root', flyouts='false', max_levels='2', label='Advanced Menu - Grafik2016_Main', no_wrapper="True" %}
+						{% google_search "module_14420044560772726" search_field_label='Search', overrideable=True, search_button_text='Search', label='Search' %}
+					</div>
+					<div class="column medium-5 hide-for-small-only Sidebar">
+						<!-- FEATURED DOWNLOAD GOES HERE -->
+						<div class="Social">
+							<div class="Heading">Connect</div>
+							<div class="small-3 column"><a href="//twitter.com/grafikdotcom" target="_blank" class="icon-button twitter-bt"><i class="icon-twitter icon-twitter-bt socicon socicon-twitter"></i><span></span></a></div>
+							<div class="small-3 column"><a href="//www.facebook.com/Grafikdotcom/" target="_blank" class="icon-button facebook"><i class="icon-facebook icon-facebook-bt socicon socicon-facebook"></i><span></span></a></div>
+							<div class="small-3 column"><a href="//plus.google.com/+Grafikdotcom/posts" target="_blank" class="icon-button google-plus-bt"><i class="icon-google-plus icon-google-plus-bt socicon socicon-google-plus"></i><span></span></a></div>
+							<div class="small-3 column"><a href="//www.linkedin.com/company/grafik" target="_blank" class="icon-button linkedin"><i class="icon-linkedin icon-linkedin-bt socicon socicon-linkedin"></i><span></span></a></div>
+							<div class="small-3 column"><a href="//www.pinterest.com/grafikdotcom/" target="_blank" class="icon-button pinterest"><i class="icon-pinterest icon-pinterest-bt socicon socicon-pinterest"></i><span></span></a></div>
+							<div class="small-3 column"><a href="//instagram.com/grafikdotcom/" target="_blank" class="icon-button instagram"><i class="icon-instagram icon-instagram-bt socicon socicon-instagram"></i><span></span></a></div>
+							<div class="small-3 column"><a href="//vimeo.com/grafikdotcom" target="_blank" class="icon-button vimeo"><i class="icon-vimeo icon-vimeo-bt socicon socicon-vimeo"></i><span></span></a></div>
+							<div class="small-3 column end"><a href="//www.behance.net/grafikdotcom" target="_blank" class="icon-button behance"><i class="icon-behance icon-behance-bt socicon socicon-behance"></i><span></span></a></div>
+						</div>
+						<div class="Contact">
+							<div class="column medium-6"><a href="tel:+17032994500">703 299 4500</a></div>
+							<div class="column medium-6"><a href="/contact" class="Pin">Directions</a></div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</header>
+
+		<!-- GRAFIK2016 - TemplateMain -->
+		<main class="Theme-TemplateFragment Theme-TemplateMain" style="{% if widget_data.Grafik_ContentBgcolor.color %}background:{{ widget_data.Grafik_ContentBgcolor.color }};{% endif %}">
+			{% widget_container "Grafik2016_FlexColumn" overrideable="False", label="Page Elements" %}
+				{% text "Grafik2016_InitBeta" label="Delete me, you fool!", value="Because the HubSpot beta page editor touched my naughty bits!" %}
+			{% end_widget_container %}
+			{% if widget_data.Grafik_ShareButtons.value == "true" %}
+				<!-- GRAFIK2016 - ShareButtons -->
+				<section id="Grafik-Share" class="Theme-Widget Theme-ShareButtons">
+					<div class="row Theme-Interior">
+						<div class="column medium-offset-1 medium-2 small-only-text-center Label"><h4>Share</h4></div>
+						<div class="column medium-6 Icons">
+							<ul>
+								<li><a href="//twitter.com/intent/tweet?text={{ 'I just saw this on grafik.com' }}+{{ content.absolute_url|urlencode }}" target="_blank" class="icon-button twitter"><i class="icon-twitter socicon socicon-twitter"></i><span></span></a></li>
+								<li><a href="//facebook.com/sharer/sharer.php?u={{ content.absolute_url|urlencode }}" target="_blank" class="icon-button facebook"><i class="icon-facebook socicon socicon-facebook"></i><span></span></a></li>
+								<li><a href="//linkedin.com/shareArticle?mini=true&amp;url={{ content.absolute_url|urlencode }}&amp;title={{ name|urlencode }}&amp;summary={{ 'I just saw this on grafik.com'|urlencode }}&amp;source=GRAFIK" target="_blank" class="icon-button linkedin"><i class="icon-linkedin socicon socicon-linkedin"></i><span></span></a></li>
+								<li><a href="//plus.google.com/share?url={{ content.absolute_url|urlencode }}" target="_blank" class="icon-button google-plus"><i class="icon-google-plus socicon socicon-google-plus"></i><span></span></a></li>
+								<li><a href="mailto:someone@somewhere.com?subject={{ name }}&amp;body={{ 'I just saw this on grafik.com' }}%0D%0A{{ content.absolute_url|urlencode }}" class="icon-button pinterest"><i class="icon-pinterest socicon socicon-mail"></i><span></span></a></li>
+							</ul>
+						</div>
+						<hr/>
+					</div>
+				</section>
+			{% endif %}
+		</main>
+
+		<!-- GRAFIK2016 - TemplateFooter -->
+		<footer class="Theme-TemplateFragment Theme-TemplateFooter">
+			{% if widget_data.Grafik_DisplayCTA.value != "off" %}
+				<!-- GRAFIK2016 - CTA -->
+				<section id="Grafik-FooterCTA" class="Theme-Widget Theme-CTA">
+					<div class="row Theme-Interior">
+						{% if widget_data.Grafik_DisplayCTA.value == 1 %}
+							<h3>Let&rsquo;s start a dialogue</h3>
+							<span class="hs-cta-wrapper" id="hs-cta-wrapper-f92a1170-1487-4db7-9dcf-ffaeb3f27cca">
+								<span class="hs-cta-node hs-cta-f92a1170-1487-4db7-9dcf-ffaeb3f27cca" id="hs-cta-f92a1170-1487-4db7-9dcf-ffaeb3f27cca">
+									<!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]-->
+									<a href="http://cta-redirect.hubspot.com/cta/redirect/505301/f92a1170-1487-4db7-9dcf-ffaeb3f27cca"><img class="hs-cta-img" id="hs-cta-img-f92a1170-1487-4db7-9dcf-ffaeb3f27cca" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/505301/f92a1170-1487-4db7-9dcf-ffaeb3f27cca.png" alt="Get Started"/></a>
+								</span>
+								<script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script>
+								<script type="text/javascript">hbspt.cta.load(505301, 'f92a1170-1487-4db7-9dcf-ffaeb3f27cca');</script>
+							</span>
+						{% endif %}
+						{% if widget_data.Grafik_DisplayCTA.value == 2 %}
+							<h3>Become part of our team</h3>
+							<span class="hs-cta-wrapper" id="hs-cta-wrapper-cd5104f8-b0b9-4bd0-bcd8-c77f2b802456">
+								<span class="hs-cta-node hs-cta-cd5104f8-b0b9-4bd0-bcd8-c77f2b802456" id="hs-cta-cd5104f8-b0b9-4bd0-bcd8-c77f2b802456">
+									<!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]-->
+									<a href="http://cta-redirect.hubspot.com/cta/redirect/505301/cd5104f8-b0b9-4bd0-bcd8-c77f2b802456"><img class="hs-cta-img" id="hs-cta-img-cd5104f8-b0b9-4bd0-bcd8-c77f2b802456" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/505301/cd5104f8-b0b9-4bd0-bcd8-c77f2b802456.png" alt="Careers"/></a>
+								</span>
+								<script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script>
+								<script type="text/javascript">hbspt.cta.load(505301, 'cd5104f8-b0b9-4bd0-bcd8-c77f2b802456');</script>
+							</span>
+						{% endif %}
+						{% if widget_data.Grafik_DisplayCTA.value == 3 %}
+							<h3>Become part of our team</h3>
+							<span class="hs-cta-wrapper" id="hs-cta-wrapper-f3b8a8e2-488f-4dc4-b318-c20100821829">
+								<span class="hs-cta-node hs-cta-f3b8a8e2-488f-4dc4-b318-c20100821829" id="hs-cta-f3b8a8e2-488f-4dc4-b318-c20100821829">
+									<!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]-->
+									<a href="http://cta-redirect.hubspot.com/cta/redirect/505301/f3b8a8e2-488f-4dc4-b318-c20100821829" ><img class="hs-cta-img" id="hs-cta-img-f3b8a8e2-488f-4dc4-b318-c20100821829" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/505301/f3b8a8e2-488f-4dc4-b318-c20100821829.png" alt="Join the Team"/></a>
+								</span>
+								<script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script>
+								<script type="text/javascript">hbspt.cta.load(505301, 'f3b8a8e2-488f-4dc4-b318-c20100821829');</script>
+							</span>
+						{% endif %}
+					</div>
+				</section>
+			{% endif %}
+			{% if widget_data.Grafik_Prefooter.value == "true" %}
+				<!-- GRAFIK2016 - Prefooter -->
+				<section id="Grafik-Prefooter" class="Theme-Widget Theme-TemplatePrefooter" style="{% if widget_data.Grafik_PrefooterBgcolor.color %}background:{{ widget_data.Grafik_PrefooterBgcolor.color }};{% endif %}">
+					<div class="row Theme-Interior">
+						<div class="large-offset-1 large-5 column Subscribe">
+							<!--[if lte IE 8]><script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script><![endif]-->
+							<!-- <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script> -->
+							<!-- <script>hbspt.forms.create({ portalId: '505301', formId: 'a6a98f43-cebd-4ff8-b896-78d42020f02b' });</script> -->
+						</div>
+						<div class="large-6 column LatestTweet">
+							<!-- <p class="single-tweet">RT <span class="Orange">@OpenGovInc</span>: Check out our better, brighter, and resource-rich website. Thx <span class="orange">@grafikdotcom</span> <a href="http://t.co/rVwQ806r1Y">http://t.co/rVwQ806r1Y</a></p> -->
+						</div>
+					</div>
+				</section>
+			{% endif %}
+			<!-- GRAFIK2016 - Footer -->
+			<section id="Grafik-Footer" class="Theme-Widget Theme-TemplateFooter" style="{% if widget_data.Grafik_FooterBgcolor.color %}background:{{ widget_data.Grafik_FooterBgcolor.color }};{% endif %}">
+				<div class="row Theme-Interior">
+					<div class="column medium-offset-1 medium-5 Navigation">
+						{% menu "Grafik_NavMain" site_map_name='Grafik2016_Main', overrideable=False, root_type='site_root', flyouts='false', max_levels='1', label='Advanced Menu - Grafik2016_Main', no_wrapper="True" %}
+					</div>
+					<div class="column end medium-5 SocialMedia">
+						<ul>
+							<li class="small-offset-2 small-2"><a href="//twitter.com/grafikdotcom" target="_blank" class="icon-button twitter"><i class="icon-twitter socicon socicon-twitter"></i><span></span></a></li>
+							<li class="small-2"><a href="//www.facebook.com/Grafikdotcom/" target="_blank" class="icon-button facebook"><i class="icon-facebook socicon socicon-facebook"></i><span></span></a></li>
+							<li class="small-2"><a href="//plus.google.com/+Grafikdotcom/posts" target="_blank" class="icon-button google-plus"><i class="icon-google-plus socicon socicon-google-plus"></i><span></span></a></li>
+							<li class="small-2"><a href="//www.linkedin.com/company/grafik" target="_blank" class="icon-button linkedin"><i class="icon-linkedin socicon socicon-linkedin"></i><span></span></a></li>
+							<li class="small-offset-2 small-2"><a href="//www.pinterest.com/grafikdotcom/" target="_blank" class="icon-button pinterest"><i class="icon-pinterest socicon socicon-pinterest"></i><span></span></a></li>
+							<li class="small-2"><a href="//instagram.com/grafikdotcom/" target="_blank" class="icon-button instagram"><i class="icon-instagram socicon socicon-instagram"></i><span></span></a></li>
+							<li class="small-2"><a href="//vimeo.com/grafikdotcom" target="_blank" class="icon-button vimeo"><i class="icon-vimeo socicon socicon-vimeo"></i><span></span></a></li>
+							<li class="small-2"><a href="//www.behance.net/grafikdotcom" target="_blank" class="icon-button behance"><i class="icon-behance socicon socicon-behance"></i><span></span></a></li>
+						</ul>
+					</div>
+					<div class="column medium-5 medium-offset-1 medium-push-6 small-offset-1 small-10 small-only-text-center Address">
+						<p><strong class="Brand">GRAFIK</strong><span style="font-weight:500"><br/>625 North Washington Street, Suite 302<br/>Alexandria, VA 22314<span class="Sep">|</span><a href="/contact">Map</a></span><br/>Tel: <a href="tel:+17032994500">703 299 4500</a><br/>Fax: 703.299.5999<br/>Email: <a href="mailto:info@grafik.com">info@grafik.com</a></p>
+					</div>
+					<div class="column end medium-5 medium-offset-1 medium-pull-6 small-offset-1 small-10 small-only-text-center Copyright">
+						<span><a href="/about/gsa-schedule"><img src="//cdn2.hubspot.net/hub/505301/file-2625075172-png/GSA_logo.png" alt="GSA" /></a></span>
+						<span>&copy;2015 Grafik. All rights reserved.</span>
+					</div>
+					
+				</div>
+			</section>
+		</footer>
+
+		<script src="https://cdn2.hubspot.net/hubfs/505301/js/vendor/jquery.js"></script>
+		<script src="https://cdn2.hubspot.net/hubfs/505301/js/foundation.min.js"></script>
+		<script>$(document).foundation();</script>
+		
+		<script src="https://cdn2.hubspot.net/hubfs/505301/grafik2016/Grafik2016-Scripts.js"></script>
+
+		<!-- standard_footer_includes -->
+		{{ standard_footer_includes }}
+
+	</body>
+</html>

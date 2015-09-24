@@ -1,0 +1,27 @@
+<!--
+
+88  88 88 8888o. 888888 .o88o.    8888o. 88     .o88o. 88  88 888888 8888o.
+88  88 88 88  88 88     88  88    88  88 88     88  88 88  88 88     88  88
+88  88 88 88  88 8888   88  88    8888Y' 88     888888 'Y8888 8888   8888Y'
+88 .8' 88 88  88 88     88  88    88     88     88  88     88 88     88  88
+888'   88 8888Y' 888888 'Y88Y'    88     888888 88  88 8888Y' 888888 88  88
+
+-->
+{% set custom_class = widget.custom_class ? ' {{ widget.custom_class }}' : '' %}
+{% set custom_id = widget.custom_id ? ' id="{{ widget.custom_id }}"' : '' %}
+{% set bg_color = widget.background_color ? "background-color:{{ widget.background_color }};" : "" %}
+{% set bg_image = widget.background_image.src ? "background-image:url('{{ widget.background_image.src }}');background-repeat:no-repeat;background-size:cover;" : "" %}
+{% set row_styles = widget.background_style == "row" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
+{% set box_styles = widget.background_style == "box" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
+<section class="Theme-Widget Theme-VideoPlayer{{ custom_class }}"{{ custom_id }}{{ row_styles }}>
+	<div class="row Theme-Interior"{{ box_styles }}>
+		<div class="{{ widget.video_size }}">
+			{% if widget.video_webm or widget.video_mp4 %}
+				<video cover="{% if widget.video_cover.src %}{{ widget.video_cover.src }}{% endif %}"{% if widget.video_controls %} controls="controls"{% endif %}{% if widget.video_autoplay %} autoplay="autoplay"{% endif %}{% if widget.video_loop %} loop="loop"{% endif %}{% if widget.video_muted %} muted="muted"{% endif %}>
+					{% if widget.video_webm %}<source src="{{ widget.video_webm }}" type="video/webm">{% endif %}
+					{% if widget.video_mp4 %}<source src="{{ widget.video_mp4 }}" type="video/mp4">{% endif %}
+				</video>
+			{% endif %}
+		</div>
+	</div>
+</section>

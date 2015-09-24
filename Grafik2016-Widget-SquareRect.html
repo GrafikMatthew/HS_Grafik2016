@@ -1,0 +1,41 @@
+<!--
+
+.o8888 .o88o. 88  88 .o88o. 8888o. 888888    8888o. 888888 .o8888 888888
+88     88  88 88  88 88  88 88  88 88        88  88 88     88       88  
+'Y88o. 88  88 88  88 888888 8888Y' 8888      8888Y' 8888   88       88  
+    88 'Y8888 88  88 88  88 88  88 88        88  88 88     88       88  
+8888Y'     88 'Y88Y' 88  88 88  88 888888    88  88 888888 'Y8888   88  
+
+-->
+<section id="{{ widget.custom_id }}" class="Theme-Widget Theme-SquareRect {{ widget.custom_class }}" style="{% if widget.background_style == 'row' %}background:{{ widget.background_color }} url('{{ widget.background_image.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}">
+	<div class="row Theme-Interior" style="{% if widget.background_style == 'box' %}background:{{ widget.background_color }} url('{{ widget.background_image.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}">
+		<div class="column medium-{% if widget.section_layout == 'Square-Left' %}4{% else %}8{% endif %} SquareRect-Left {% if not widget.left_bgimage.src %}SquareRect-NoImage{% endif %}" style="background:{{ widget.left_bgcolor }} url('{{ widget.left_bgimage.src }}') no-repeat 50% 50%;background-size:cover;">
+			{% if widget.left_videowebm or widget.left_videomp4 %}
+				<video class="Video" {% if widget.left_bgimage.src %}cover="{{ widget.left_bgimage.src }}"{% endif %} autoplay loop muted>
+					{% if widget.left_videowebm %}<source src="{{ widget.left_videowebm }}" type="video/webm">{% endif %}
+					{% if widget.left_videomp4 %}<source src="{{ widget.left_videomp4 }}" type="video/mp4">{% endif %}
+				</video>
+			{% endif %}
+			<div class="Flex-Container {{ widget.left_align }}">
+				<div class="Flex-Item">
+					{% if widget.left_headingtext and widget.left_headingtype != "off" %}<{{ widget.left_headingtype }} class="Heading {{ widget.body_offset_left }} {{ widget.body_width_left }}" style="{% if widget.left_headingcolor %}color:{{ widget.left_headingcolor }}{% endif %}">{{ widget.left_headingtext }}</{{ widget.left_headingtype }}>{% endif %}
+					{% if widget.left_bodytext %}<div class="Body {{ widget.body_offset_left }} {{ widget.body_width_left }}" style="{% if widget.left_bodycolor %}color:{{ widget.left_bodycolor }}{% endif %}">{{ widget.left_bodytext }}</div>{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="column medium-{% if widget.section_layout == 'Square-Left' %}8{% else %}4{% endif %} SquareRect-Right {% if not widget.right_bgimage.src %}SquareRect-NoImage{% endif %}" style="background:{{ widget.right_bgcolor }} url('{{ widget.right_bgimage.src }}') no-repeat 50% 50%;background-size:cover;">
+			{% if widget.right_videowebm or widget.right_videomp4 %}
+				<video class="Video" {% if widget.right_bgimage.src %}cover="{{ widget.right_bgimage.src }}"{% endif %} autoplay loop muted>
+					{% if widget.right_videowebm %}<source src="{{ widget.right_videowebm }}" type="video/webm">{% endif %}
+					{% if widget.right_videomp4 %}<source src="{{ widget.right_videomp4 }}" type="video/mp4">{% endif %}
+				</video>
+			{% endif %}
+			<div class="Flex-Container {{ widget.right_align }}">
+				<div class="Flex-Item">
+					{% if widget.right_headingtext and widget.right_headingtype != "off" %}<{{ widget.right_headingtype }} class="Heading {{ widget.body_offset_right }} {{ widget.body_width_right }}" style="{% if widget.right_headingcolor %}color:{{ widget.right_headingcolor }}{% endif %}">{{ widget.right_headingtext }}</{{ widget.right_headingtype }}>{% endif %}
+					{% if widget.right_bodytext %}<div class="Body {{ widget.body_offset_right }} {{ widget.body_width_right }}" style="{% if widget.right_bodycolor %}color:{{ widget.right_bodycolor }}{% endif %}">{{ widget.right_bodytext }}</div>{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

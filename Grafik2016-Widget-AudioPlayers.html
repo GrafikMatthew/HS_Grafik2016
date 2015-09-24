@@ -1,0 +1,55 @@
+<!--
+
+.o88o. 88  88 8888o. 88 .o88o.    8888o. 88     .o88o. 88  88 888888 8888o. .o8888
+88  88 88  88 88  88 88 88  88    88  88 88     88  88 88  88 88     88  88 88    
+888888 88  88 88  88 88 88  88    8888Y' 88     888888 'Y8888 8888   8888Y' 'Y88o.
+88  88 88  88 88  88 88 88  88    88     88     88  88     88 88     88  88     88
+88  88 'Y88Y' 8888Y' 88 'Y88Y'    88     888888 88  88 8888Y' 888888 88  88 8888Y'
+
+-->
+{% set push_size = '' %}
+{% if widget.section_playercount == '1' %}{% set push_size = 'large-offset-5' %}{% endif %}
+{% if widget.section_playercount == '2' %}{% set push_size = 'large-offset-4' %}{% endif %}
+{% if widget.section_playercount == '3' %}{% set push_size = 'large-offset-3' %}{% endif %}
+{% if widget.section_playercount == '4' %}{% set push_size = 'large-offset-2' %}{% endif %}
+{% macro AudioPlayer(push_size, audio_file) %}
+	<div class="{{ push_size }} large-2 column AudioPlayer">
+		<div class="Controls">
+			<div class="Controls-Interior">
+				<div class="Track" style="{% if widget.section_trackcolor %}background-color:{{ widget.section_trackcolor }};{% endif %}">
+					<div class="Progress-1" style="{% if widget.section_progresscolor %}background-color:{{ widget.section_progresscolor }};{% endif %}"></div>
+					<div class="Progress-2" style="{% if widget.section_trackcolor %}background-color:{{ widget.section_trackcolor }};{% endif %}"></div>
+				</div>
+				<div class="Face" style="{% if widget.section_facecolor %}background-color:{{ widget.section_facecolor }};{% endif %}"></div>
+				<div class="Button" style="{% if widget.section_buttoncolor %}background-color:{{ widget.section_buttoncolor }};{% endif %}"></div>
+			</div>
+		</div>
+		<div class="Info">
+			<div class="Info-Interior">
+				<div class="Info-Flex Flex-Container {{ widget.section_infoalignment }}">
+					<div class="Flex-Item">
+						<p><strong>Title</strong></p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% if audio_file %}
+			<audio>
+				<source src="{{ widget.audio01_file.src }}" type="audio/mpeg">
+				<div class="No-Support">Your browser does not support the audio element.</div>
+			</audio>
+		{% endif %}
+	</div>
+{% endmacro %}
+<section id="{{ widget.custom_id }}" class="Theme-Widget Theme-AudioPlayers {{ widget.custom_class }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+	<div class="row Theme-Interior" style="{% if widget.section_bgtype == 'box' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+		{% if widget.section_playercount >= 1 %}{{ AudioPlayer(push_size, widget.audio01_file) }}{% endif %}
+		{% if widget.section_playercount >= 2 %}{{ AudioPlayer(push_size, widget.audio02_file) }}{% endif %}
+		{% if widget.section_playercount >= 3 %}{{ AudioPlayer(push_size, widget.audio03_file) }}{% endif %}
+		{% if widget.section_playercount >= 4 %}{{ AudioPlayer(push_size, widget.audio04_file) }}{% endif %}
+		{% if widget.section_playercount >= 5 %}{{ AudioPlayer(push_size, widget.audio05_file) }}{% endif %}
+		{% if widget.section_playercount >= 6 %}{{ AudioPlayer(push_size, widget.audio06_file) }}{% endif %}
+		<div></div>
+	</div>
+</section>
