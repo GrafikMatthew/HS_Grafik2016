@@ -81,10 +81,10 @@
 {% endif %}
 <section id="{{ widget.section_customid }}" class="Theme-Widget Theme-TileGrid {{ widget.section_customclasses }}" style="{% if widget.section_displaytype == "row" %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 	<div class="row Theme-Interior" style="{% if widget.section_displaytype == "box" %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
-		{% if (widget.section_featuredtype == "Left-Tall" or widget.section_featuredtype == "Left-Wide") and widget.section_featuredmediatype != "off" %}
+		{% if (widget.section_featuredtype == "Left-Tall" or widget.section_featuredtype == "Left-Wide") and widget.section_featuredtype != "off" %}
 			{{ GridFeature(featured_containersize) }}
 		{% endif %}
-		<div class="{{ tile_containersize }} column GridTiles">
+		<div class="{{ tile_containersize }} column GridTiles {% if widget.section_featuredtype == 'off' %}No-Feature{% endif %}">
 			{{ GridTile(tile_blocksize,widget.tile1_linkurl,widget.tile1_linktype,widget.tile1_hovereffect,widget.tile1_hovercolor,widget.tile1_bgcolor,widget.tile1_bgimage.src,widget.tile1_alignment,widget.tile1_textcolor,widget.tile1_titletext,widget.tile1_titletype,widget.tile1_bodytext,widget.tile1_buttontext,widget.tile1_buttontype) }}
 			{{ GridTile(tile_blocksize,widget.tile2_linkurl,widget.tile2_linktype,widget.tile2_hovereffect,widget.tile2_hovercolor,widget.tile2_bgcolor,widget.tile2_bgimage.src,widget.tile2_alignment,widget.tile2_textcolor,widget.tile2_titletext,widget.tile2_titletype,widget.tile2_bodytext,widget.tile2_buttontext,widget.tile2_buttontype) }}
 			{{ GridTile(tile_blocksize,widget.tile3_linkurl,widget.tile3_linktype,widget.tile3_hovereffect,widget.tile3_hovercolor,widget.tile3_bgcolor,widget.tile3_bgimage.src,widget.tile3_alignment,widget.tile3_textcolor,widget.tile3_titletext,widget.tile3_titletype,widget.tile3_bodytext,widget.tile3_buttontext,widget.tile3_buttontype) }}
@@ -92,7 +92,7 @@
 			{{ GridTile(tile_blocksize,widget.tile5_linkurl,widget.tile5_linktype,widget.tile5_hovereffect,widget.tile5_hovercolor,widget.tile5_bgcolor,widget.tile5_bgimage.src,widget.tile5_alignment,widget.tile5_textcolor,widget.tile5_titletext,widget.tile5_titletype,widget.tile5_bodytext,widget.tile5_buttontext,widget.tile5_buttontype) }}
 			{{ GridTile(tile_blocksize,widget.tile6_linkurl,widget.tile6_linktype,widget.tile6_hovereffect,widget.tile6_hovercolor,widget.tile6_bgcolor,widget.tile6_bgimage.src,widget.tile6_alignment,widget.tile6_textcolor,widget.tile6_titletext,widget.tile6_titletype,widget.tile6_bodytext,widget.tile6_buttontext,widget.tile6_buttontype) }}
 		</div>
-		{% if (widget.section_featuredtype == "Right-Tall" or widget.section_featuredtype == "Right-Wide") and widget.section_featuredmediatype != "off" %}
+		{% if (widget.section_featuredtype == "Right-Tall" or widget.section_featuredtype == "Right-Wide") and widget.section_featuredtype != "off" %}
 			{{ GridFeature(featured_containersize) }}
 		{% endif %}
 	</div>

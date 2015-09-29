@@ -12,7 +12,7 @@
 		<div class="medium-6 column">
 			<div class="Tile {{ behavior }}" style="{% if behavior == 'Custom' %}height:{{ customheight }};{% endif %}background:{{ bgcolor }} url('{{ bgimage }}') no-repeat 50% 50%;background-size:cover;">
 				{% if videowebm or videomp4 %}
-					<video class="Tile-Video" poster="{% if widget.left_bgimage.src %}{{ widget.left_bgimage.src }}{% endif %}" {{ autoplay }} {{ loop }} muted>
+					<video class="Tile-Video" poster="{% if bgimage %}{{ bgimage }}{% endif %}" {{ autoplay }} {{ loop }} muted>
 						{% if videowebm %}<source src="{{ videowebm }}" type="video/webm">{% endif %}
 						{% if videomp4 %}<source src="{{ videomp4 }}" type="video/mp4">{% endif %}
 					</video>
