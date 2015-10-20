@@ -7,7 +7,8 @@
 88  88 888888 88  88 'Y88Y'    8888Y' 888888 'Y88Y' 'Y8888 88  88
 
 -->
-<section id="{{ widget.custom_id }}" class="Theme-Widget Theme-HeroBlock {{ widget.custom_class }}" style="{% if widget.background_style == 'row' %}background:{{ widget.background_color }} url('{{ widget.background_image.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+<!-- GRAFIK2016 - HeroBlock -->
+<section {% if widget.custom_id %}id="{{ widget.custom_id }}"{% endif %} class="Theme-Widget Theme-HeroBlock {{ widget.custom_class }}" style="{% if widget.background_style == 'row' %}background:{{ widget.background_color }} url('{{ widget.background_image.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 	<div class="row Theme-Interior" style="{% if widget.background_style == 'box' %}background:{{ widget.background_color }} url('{{ widget.background_image.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 		<div class="Hero" style="{% if widget.hero_height %}padding-bottom:{{ widget.hero_height }};{% endif %}{% if widget.content_color %}color:{{ widget.content_color }};{% endif %}">
 			<div class="HeroInterior Flex-Container {{ widget.content_alignment }}">

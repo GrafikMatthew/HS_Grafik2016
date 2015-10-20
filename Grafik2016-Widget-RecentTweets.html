@@ -1,0 +1,56 @@
+<!--
+
+8888o. 888888 .o8888 888888 8888o. 888888    888888 88 88 88 888888 888888 888888 .o8888
+88  88 88     88     88     88  88   88        88   88 88 88 88     88       88   88    
+8888Y' 8888   88     8888   88  88   88        88   88 88 88 8888   8888     88   'Y88o.
+88  88 88     88     88     88  88   88        88   88 88 88 88     88       88       88
+88  88 888888 'Y8888 888888 88  88   88        88   888888Y' 888888 888888   88   8888Y'
+
+-->
+<!-- GRAFIK2016 - RecentTweets -->
+<script>
+	(function($){
+		var ParentScriptTag = $(document.scripts[document.scripts.length - 1]);
+		var ContainerEl, ContainerID = 'RecentTweets-'+(new Date().getTime());
+		var TweetID = 0;
+		function TweetHTML(data) {
+			console.log(data)
+			var TweetText = data.text;
+			/*
+			$.each(data.entities.hashtags, function(i) {
+			var ThisHashtag = data.entities.hashtags[i].text;
+			TweetText = TweetText.split('#'+ThisHashtag).join('<a href="https://twitter.com/hashtag/'+ThisHashtag+'?src=hash" target="_blank">#'+ThisHashtag+'</a>');
+			});
+			$.each(data.entities.user_mentions, function(i) {
+			var ThisMention = data.entities.user_mentions[i].screen_name;
+			TweetText = TweetText.split('@'+ThisMention).join('<a href="https://twitter.com/'+ThisMention+'" target="_blank">@'+ThisMention+'</a>');
+			});
+			$.each(data.entities.urls, function(i) {
+			var ThisURL = data.entities.urls[i].url;
+			var ThisExpURL = data.entities.urls[i].expanded_url;
+			var ThisDispURL = data.entities.urls[i].display_url;
+			TweetText = TweetText.split(ThisURL).join('<a href="'+ThisExpURL+'" target="_blank">'+ThisDispURL+'</a>');
+			});
+			*/
+			var TweetSource = TweetText.split(' ');
+			var TweetURL = TweetSource[TweetSource.length-1];
+			TweetText = TweetText.split(TweetURL).join('<br/><a href="'+TweetURL+'" class="ViewOriginal" target="_blank">'+TweetURL+'</a>');
+			return TweetText;
+		}
+		function GetLatestTweet() {
+			$.getJSON("http://sandbox.grafik-projects.com/grafik-tweets/", function(data) {
+				if(data[0].id == TweetID) return;
+				TweetID = data[0].id;
+				ContainerEl.animate({ "opacity" : 0 }, 250, function() {
+					ContainerEl.html(TweetHTML(data[0])).animate({ "opacity" : 1 }, 250, function() {
+						window.setTimeout(GetLatestTweet, 5000);
+					});
+				});
+			});
+		}
+		$(document).on('ready', function() {
+			ContainerEl = $('<div/>').attr('id', ContainerID).insertBefore(ParentScriptTag);
+			GetLatestTweet();
+		});
+	})(jQuery);
+</script>

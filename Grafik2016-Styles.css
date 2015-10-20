@@ -51,6 +51,49 @@
 		text-transform: initial;
 	}
 
+/* Icon Usage */
+
+	a.Icon-S, a.Icon-S:before, a.Icon-S:after, a.Icon-S:hover > .Effect { width: 2rem; height: 2rem; line-height: 2rem; font-size: 1rem; }
+	a.Icon-M, a.Icon-M:before, a.Icon-M:after, a.Icon-M:hover > .Effect { width: 3rem; height: 3rem; line-height: 3rem; font-size: 1.5rem; }
+	a.Icon-L, a.Icon-L:before, a.Icon-L:after, a.Icon-L:hover > .Effect { width: 4rem; height: 4rem; line-height: 4rem; font-size: 2rem; }
+	a[class^="Icon-"] { display: inline-block; position: relative; font-family: "Socicon"; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; speak: none; }
+	a[class^="Icon-"]:before { content: ""; display: block; text-align: center; z-index: 3; }
+	a[class^="Icon-"]:after { content: ""; display: block; z-index: 1; }
+	a[class^="Icon-"]:before, a[class^="Icon-"]:after { border-radius: 50%; position: absolute; top: 0; left: 0; }
+	a[class^="Icon-"] > .Name { display: none; }
+	a[class^="Icon-"]:hover > .Effect { top: 0; left: 0; }
+	a[class^="Icon-"] > .Effect { display: block; border-radius: 50%; width: 0; height: 0; position: absolute; top: 50%; left: 50%; z-index: 2; }
+	a[class^="Icon-"]:before, a[class^="Icon-"]:after, a[class^="Icon-"] > .Effect {
+		-webkit-transition: all 0.25s;
+		-moz-transition: all 0.25s;
+		-ms-transition: all 0.25s;
+		-o-transition: all 0.25s;
+		transition: all 0.25s;
+	}
+	a[class^="Icon-"].Twitter:before { content: "a"; }
+	a[class^="Icon-"].GooglePlus:before { content: "c"; }
+	a[class^="Icon-"].Facebook:before { content: "b"; }
+	a[class^="Icon-"].LinkedIn:before { content: "j"; }
+	a[class^="Icon-"].Pinterest:before { content: "d"; }
+	a[class^="Icon-"].Instagram:before { content: "x"; }
+	a[class^="Icon-"].Behance:before { content: "H"; }
+	a[class^="Icon-"].Dribbbel:before { content: "D"; }
+	a[class^="Icon-"].Tumblr:before { content: "z"; }
+	a[class^="Icon-"].Vimeo:before { content: "s"; }
+	a[class^="Icon-"].Email:before { content: "@"; }
+
+	/* Default Colors */
+	a[class^="Icon-"]:before { color: #fff; }
+	a[class^="Icon-"]:after { background: #000; }
+	a[class^="Icon-"]:hover:before { color: #fff; }
+	a[class^="Icon-"] > .Effect { background: #f60; }
+
+	/* Custom Colors */
+	#Grafik-Navmenu .Social a[class^="Icon-"]:before { color: #000; }
+	#Grafik-Navmenu .Social a[class^="Icon-"]:after { background: #fff; }
+	#Grafik-Navmenu .Social a[class^="Icon-"]:hover:before { color: #fff; }
+	#Grafik-Navmenu .Social a[class^="Icon-"] > .Effect { background: #f60; }
+
 /* Animation Usage */
 
 	@-webkit-keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
@@ -270,12 +313,12 @@
 		#Grafik-Navmenu .Navigation ul ul { padding-left: 0.25rem; clear: both; }
 		#Grafik-Navmenu .Navigation ul li { padding-bottom: 3rem; clear: both; }
 		#Grafik-Navmenu .Navigation ul ul li { display: block; float: left; margin-right: 1.25rem; padding: 0; clear: none; }
-		#Grafik-Navmenu .Navigation ul a { display: block; line-height: 3rem; font-size: 3rem; font-weight: 300; color: #f7f7f7; }
+		#Grafik-Navmenu .Navigation ul a { display: block; font-weight: 300; color: #f7f7f7; }
 		#Grafik-Navmenu .Navigation ul a:hover { color: #fff; }
-		#Grafik-Navmenu .Navigation ul ul a { line-height: 1.25rem; font-size: 1.25rem; font-weight: 400; color: #666; }
+		#Grafik-Navmenu .Navigation ul ul a { font-weight: 400; color: #666; }
 		#Grafik-Navmenu #hs-search-module label,
 		#Grafik-Navmenu #hs-search-module a { display: none; }
-		#Grafik-Navmenu #hs-search-module .hs-input { border: none; border-bottom: 1px solid #666; padding: 0; height: 100%; line-height: 3rem; font-size: 3rem; font-weight: 300; background: none; color: #fff; opacity: 0.5; }
+		#Grafik-Navmenu #hs-search-module .hs-input { border: none; border-bottom: 1px solid #666; padding: 0; height: 100%; font-weight: 300; background: none; color: #fff; opacity: 0.5; }
 		#Grafik-Navmenu #hs-search-module .hs-input:focus { opacity: 1; }
 		#Grafik-Navmenu .Sidebar { color: #666; }
 		#Grafik-Navmenu .Sidebar .Social:after,
@@ -299,13 +342,9 @@
 			transform: translate(-0.5rem,0.5rem) rotate(45deg);
 		}
 
-		/* Template - Prefooter */
-
-		#Grafik-Prefooter .column { padding: 0; }
-		#Grafik-Prefooter form p:first-child { margin-top: 20px; margin-bottom: 0; }
-		#Grafik-Prefooter form input[type=email] { display: inline-block; border: none; width: 55%; height: 50px; font-size: inherit; }
-		#Grafik-Prefooter form button { border: none; width: 25%; height: 50px; font-size: inherit; background: #f60; color: #fff; padding-top: 15px; }
-		#Grafik-Prefooter .LatestTweet { min-height: 50px; padding: 0 0 0 70px; background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFUUlEQVR4Xu2bi1EUQRCGuyNQIlAiECIQIlAjECIQIlAiUCJQIlAjUCIQIhAjECJo69vqPef29jGvvePQqdoScHa6+59+z6zKzMPMHovIcxHZ84ffn/oTUr8REZ5bEbny51JV+X22oXOsbGYI+1pEDlzoEjKA8V1ELlSVn6uOagD4TiP0Sc/u1mIaAD45GFU0oxgAF/yNC456r2Mg/AcROS81kSIAzIwdh5F1Cd4FFyBOVPUiF/UsAMwMJ/bRbTyXds338BHHqooTTRrJAJjZSxd+U7s+JCDaAAhfUhBIAsDM3rutp9BY99wPqnoaSzQaADND5Y9iF97wvE+qehzDQxQAWyZ8K3cUCJMAbKnw0SCMAmBmhDhi/DYPcgWSs94xCIB7+8/bLHnA+6uh6NALgMf5HxtMcGrjTojc78sThgD4do+SnFpgfFfVw+5iKwCYGaGOkPcQB4kSxdRiLAHghc3PB6T63U3EFHbDAqoLwDsRebvhrf8lIqSzbblL3UFf4Uklvs5UFTmbsQCgYPfvRORRBeauvbKjsFkZbpqE5ZAWVSDzU0x2SQtCAIiV5PqpA8cCY89SXwzmI/zBVG3vnSb4RGic2o2Z5TjsU1WF5yUNwPZRt5Rxrap7rj0wlQMCKr83JfyAVuQmalequr8AwJEl7qcOmpbYpzgIeNgXiYuseOaY980MTYA2/oJ/ac6kDPKCq8YEClLeJYfia6WY0p2qFvUVCsJ2kyK3ALD7dHJTx0IDwhddo1BP2uFjo/f9WCYKhIdEYwbqqvs7lmhn3o2q7g69a2aoJiFnCIgVDYrlw8xqhOwdAKDFVVL0HKpqb+hqhfHaAjpkmaGjHK3UxsAwM2hOadgUnq8AoBTJhUedohYA0jhOok43NU1YowYAZwCAF0313C2fhDAytKjuS6xwMfMqacAFAJQgeeYnNewomlD96GrEv1gMUJNO2MxyEqB23a+qim2vdRQ67pDXKzSgFMmdnCyuBLEKjntBvgYA2aEsF4SCxG2FZA0AWLRJK3MFSn2v0GyXyNUCIOtYKlVw5ntyRQVYZQAAB4q1mg1EFI6mvlbhrmeRzPJ3iJ3r0jAYLsx5HGZwO5c51N59EbksTYRCAHq7rjU1ofLuw1qTCJWmwqGMWbV9DEhe/+d0rMaWb1Lh0mKoS4AbG+cxQsXO8fIax1fUO+ih1xRDLJpbDg/JUM0ZOn8In9OvmMJ4p22I4Lxy+nlTBPj/bLOYWfimn1naEhsD4NLb3FkJ0szCw/dSSwz1ymmKdgGgPG7VP0twT3bghyZNapc6RiPbOX+bok40NSFCUJxde4JDeyz5llbIcXDncHFykyJRwtxG/ZlfejCCwDBLWZx9c9MFpymzrjuHvQcjRAMEyjnmQng6S3SGsP3JEVyiJgzz1A5xQzxwlEcrrtmwuQ5H29vefSaB6mHbc4S1SeBFpP9w1P1AiRbEEN/0nKXdX9EAB+HfvSDRbk9ho3TTuzxEv/cUauySFHac4xDvIwCoPifQKz7p/zW5se2q2XzcoFrkXZQM/AFn/qln7xuUd4k03xmNXvCevCvskWEbQZgUvjcMDm2dmW0TCFHCJwHgmpB7J2edJpF05B5lAp2KjbwdbbhvIZJQdzTrJzOBYySXB4TSCwq1NIMCDOGTy/FkDehoAx62e3mxllAx62TterhwEQBBAcXNMJ51mQWCAzynUNl9iGQnOJE0UUmiEd17QDE7GTuHG6WYHn2HIsFbgsUa0Me59/EBgpsjpd1mhKb9htDZfcYhhGcBoOMn0Iz2K/L2s3n+1gUGQdnV9jP65qvxWjs9BMAfQ+gsSubVk5AAAAAASUVORK5CYII=') no-repeat 10px 10px; background-size: 50px 50px; }
+		#Grafik-Navmenu .Navigation ul a { line-height: 2rem; font-size: 2rem; }
+		#Grafik-Navmenu .Navigation ul ul a { line-height: 1rem; font-size: 1rem; }
+		#Grafik-Navmenu #hs-search-module .hs-input { line-height: 2rem; font-size: 2rem; }
 
 		/* Template - Footer */
 
@@ -321,9 +360,8 @@
 		#Grafik-Footer .SocialMedia ul li .icon-button i { margin: 0; width: 3rem; height: 3rem; line-height: 3rem; font-size: 1.5rem; text-align: center; position: absolute; top: 0; left: 0; z-index: 2; }
 		#Grafik-Footer .SocialMedia ul li .icon-button span { margin: 0; border-radius: 1.5rem; width: 0; height: 0; background: #f60; position: absolute; top: 1.5rem; left: 1.5rem; z-index: 1; }
 		#Grafik-Footer .SocialMedia ul li .icon-button:hover span { width: 3rem; height: 3rem; top: 0; left: 0; }
-		#Grafik-Footer .Copyright { margin-top: 8rem; font-weight: 500; }
-		#Grafik-Footer .Copyright span { margin-right: 10px; vertical-align: bottom; }
-		#Grafik-Footer .Address { padding-top: 2.5rem; font-weight: 500; }
+		#Grafik-Footer .Copyright { /* margin-top: 8rem; */ font-weight: 500; }
+		#Grafik-Footer .Address { /* padding-top: 2.5rem; */ font-weight: 500; }
 		#Grafik-Footer .Address p { margin: 0; }
 		#Grafik-Footer .Address a { color: #fff; }
 		#Grafik-Footer .Address .Brand { color: #f60; }
@@ -346,6 +384,16 @@
 		.Theme-ShareButtons .icon-button span { margin: 0; border-radius: 1.5rem; width: 0; height: 0; background: #f60; position: absolute; top: 1.5rem; left: 1.5rem; z-index: 1; }
 		.Theme-ShareButtons .icon-button:hover span { width: 3rem; height: 3rem; top: 0; left: 0; }
 		.Theme-ShareButtons hr { display: none; margin: 0; border: none; border-bottom: 1px solid #ccc; height: 1.875rem; background: transparent; }
+
+		/* Widget - SharePage */
+
+		.Widget-SharePage { background: #ededed; position: relative; }
+		.Widget-SharePage .SharePage-Interior { border-top: 2px solid #ededed; max-width: 1200px; background: #fff; }
+		.Widget-SharePage .SharePage-Interior .column { padding: 0; }
+		.Widget-SharePage .SharePage-Interior .Interior-Label { margin: 0; padding: 0; color: #ccc; line-height: 3rem; }
+		.Widget-SharePage .SharePage-Interior .Interior-Icons { margin: 0; list-style-type: none; overflow: auto; }
+		.Widget-SharePage .SharePage-Interior .Interior-Icons li { float: left; display: block; width: 20%; text-align: center; }
+		.Widget-SharePage .SharePage-Interior .Interior-Icons li a { vertical-align: top; }
 
 		/* Theme (All) - Footer CTAs */
 
@@ -618,6 +666,21 @@
 		.Theme-OverlappingBoxes .Theme-Interior .Video { height: 465px; }
 		.Theme-OverlappingBoxes .Flex-Item{ padding: 3.125rem 0; }
 
+		/* Theme Widget - Prefooter */
+
+		.Widget-Prefooter { padding: 3.125rem 0; background: #333; }
+		.Widget-Prefooter .Prefooter-Interior { max-width: 1200px; }
+		.Widget-Prefooter .Prefooter-Interior .column { padding: 0; }
+		.Widget-Prefooter .Prefooter-Interior .Interior-RecentTweets { min-height: 50px; padding: 0 0 0 70px; color: #fff; background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFUUlEQVR4Xu2bi1EUQRCGuyNQIlAiECIQIlAjECIQIlAiUCJQIlAjUCIQIhAjECJo69vqPef29jGvvePQqdoScHa6+59+z6zKzMPMHovIcxHZ84ffn/oTUr8REZ5bEbny51JV+X22oXOsbGYI+1pEDlzoEjKA8V1ELlSVn6uOagD4TiP0Sc/u1mIaAD45GFU0oxgAF/yNC456r2Mg/AcROS81kSIAzIwdh5F1Cd4FFyBOVPUiF/UsAMwMJ/bRbTyXds338BHHqooTTRrJAJjZSxd+U7s+JCDaAAhfUhBIAsDM3rutp9BY99wPqnoaSzQaADND5Y9iF97wvE+qehzDQxQAWyZ8K3cUCJMAbKnw0SCMAmBmhDhi/DYPcgWSs94xCIB7+8/bLHnA+6uh6NALgMf5HxtMcGrjTojc78sThgD4do+SnFpgfFfVw+5iKwCYGaGOkPcQB4kSxdRiLAHghc3PB6T63U3EFHbDAqoLwDsRebvhrf8lIqSzbblL3UFf4Uklvs5UFTmbsQCgYPfvRORRBeauvbKjsFkZbpqE5ZAWVSDzU0x2SQtCAIiV5PqpA8cCY89SXwzmI/zBVG3vnSb4RGic2o2Z5TjsU1WF5yUNwPZRt5Rxrap7rj0wlQMCKr83JfyAVuQmalequr8AwJEl7qcOmpbYpzgIeNgXiYuseOaY980MTYA2/oJ/ac6kDPKCq8YEClLeJYfia6WY0p2qFvUVCsJ2kyK3ALD7dHJTx0IDwhddo1BP2uFjo/f9WCYKhIdEYwbqqvs7lmhn3o2q7g69a2aoJiFnCIgVDYrlw8xqhOwdAKDFVVL0HKpqb+hqhfHaAjpkmaGjHK3UxsAwM2hOadgUnq8AoBTJhUedohYA0jhOok43NU1YowYAZwCAF0313C2fhDAytKjuS6xwMfMqacAFAJQgeeYnNewomlD96GrEv1gMUJNO2MxyEqB23a+qim2vdRQ67pDXKzSgFMmdnCyuBLEKjntBvgYA2aEsF4SCxG2FZA0AWLRJK3MFSn2v0GyXyNUCIOtYKlVw5ntyRQVYZQAAB4q1mg1EFI6mvlbhrmeRzPJ3iJ3r0jAYLsx5HGZwO5c51N59EbksTYRCAHq7rjU1ofLuw1qTCJWmwqGMWbV9DEhe/+d0rMaWb1Lh0mKoS4AbG+cxQsXO8fIax1fUO+ih1xRDLJpbDg/JUM0ZOn8In9OvmMJ4p22I4Lxy+nlTBPj/bLOYWfimn1naEhsD4NLb3FkJ0szCw/dSSwz1ymmKdgGgPG7VP0twT3bghyZNapc6RiPbOX+bok40NSFCUJxde4JDeyz5llbIcXDncHFykyJRwtxG/ZlfejCCwDBLWZx9c9MFpymzrjuHvQcjRAMEyjnmQng6S3SGsP3JEVyiJgzz1A5xQzxwlEcrrtmwuQ5H29vefSaB6mHbc4S1SeBFpP9w1P1AiRbEEN/0nKXdX9EAB+HfvSDRbk9ho3TTuzxEv/cUauySFHac4xDvIwCoPifQKz7p/zW5se2q2XzcoFrkXZQM/AFn/qln7xuUd4k03xmNXvCevCvskWEbQZgUvjcMDm2dmW0TCFHCJwHgmpB7J2edJpF05B5lAp2KjbwdbbhvIZJQdzTrJzOBYySXB4TSCwq1NIMCDOGTy/FkDehoAx62e3mxllAx62TterhwEQBBAcXNMJ51mQWCAzynUNl9iGQnOJE0UUmiEd17QDE7GTuHG6WYHn2HIsFbgsUa0Me59/EBgpsjpd1mhKb9htDZfcYhhGcBoOMn0Iz2K/L2s3n+1gUGQdnV9jP65qvxWjs9BMAfQ+gsSubVk5AAAAAASUVORK5CYII=') no-repeat 0% 50%; background-size: 50px 50px; }
+		.Widget-Prefooter .Prefooter-Interior .Interior-RecentTweets .ViewOriginal { color: #fff; }
+		.Widget-Prefooter .Prefooter-Interior .Interior-Subscribe form * { display: inline-block; font-family: "Forza", sans-serif; }
+		.Widget-Prefooter .Prefooter-Interior .Interior-Subscribe form label { margin: 0; padding: 0; line-height: 1rem; font-weight: 500; text-transform: uppercase; color: #fff; }
+		.Widget-Prefooter .Prefooter-Interior .Interior-Subscribe form label .hs-form-required { display: none; }
+		.Widget-Prefooter .Prefooter-Interior .Interior-Subscribe form div.input { display: inline; }
+		.Widget-Prefooter .Prefooter-Interior .Interior-Subscribe form input[name="email"] { display: inline-block; margin: 0.25rem 0; border: none; border-radius: 0; width: 55%; height: 50px; font-size: inherit; }
+		.Widget-Prefooter .Prefooter-Interior .Interior-Subscribe form .hs-error-msgs { display: none; width: 0 !important; height: 0 !important; overflow: hidden; }
+		.Widget-Prefooter .Prefooter-Interior .Interior-Subscribe form input[type="submit"] { border: none; width: 25%; height: 50px; font-size: inherit; background: #f60; color: #fff; padding-top: 15px; }
+
 		/* Theme Widget - PrevNextAll */
 
 		.Theme-PrevNextAll .column { padding: 0; }
@@ -866,7 +929,7 @@
 	}
 
 	/* LESS THAN MEDIUM */
-	@media only screen and (max-width: 40.0629999999em) {
+	@media only screen and (max-width: 40em) {
 
 		#Grafik-Share .Label { padding-bottom: 1rem; }
 
@@ -886,6 +949,13 @@
 		.Theme-SquareRect .SquareRect-Left.No-Image.No-Video,
 		.Theme-SquareRect .SquareRect-Right.No-Image.No-Video { padding-bottom: 0; }
 		.Theme-SquareRect .medium-4.No-Image.No-Video { padding: 2rem; }
+
+		.Override-BrandingLinks h1,
+		.Override-BrandingLinks h2,
+		.Override-BrandingLinks h3,
+		.Override-BrandingLinks h4,
+		.Override-BrandingLinks h5,
+		.Override-BrandingLinks h6 { font-size: 1.5rem; }
 
 		.Override-StopStacking .medium-1 { clear: none; float: left; width: 08.3333333333%; }
 		.Override-StopStacking .medium-2 { clear: none; float: left; width: 16.6666666666%; }
@@ -928,7 +998,7 @@
 		.medium-10 { width: 83.3333333333%; }
 		.medium-11 { width: 91.6666666666%; }
 		.medium-12 { width: 100%; }
-		
+
 		/* Theme - SquareRect */
 
 		.Theme-SquareRect .column,
@@ -953,7 +1023,7 @@
 	}
 
 	/* LESS THAN LARGE */
-	@media only screen and (max-width: 64.0629999999em) {
+	@media only screen and (max-width: 64em) {
 
 		.Override-StopStacking .large-1 { clear: none; float: left; width: 08.3333333333%; }
 		.Override-StopStacking .large-2 { clear: none; float: left; width: 16.6666666666%; }
@@ -999,9 +1069,11 @@
 		
 		/* Template - Navmenu */
 
+		/*
 		#Grafik-Navmenu .Navigation ul a { line-height: 4rem; font-size: 4rem; }
 		#Grafik-Navmenu .Navigation ul ul a { line-height: 2rem; font-size: 1.5rem; }
 		#Grafik-Navmenu #hs-search-module .hs-input { line-height: 4rem; font-size: 4rem; }
+		*/
 
 		/* Override Classes */
 
@@ -1030,5 +1102,25 @@
 		.PadFull-Bottom { padding-bottom: 6rem; }
 		.PadHalf-Top { padding-top: 3rem; }
 		.PadHalf-Bottom { padding-bottom: 3rem; }
+
+	}
+
+	/* MEDIUM AND UP HORIZONTALLY WITH MEDIUM AND UP VERTICALLY */
+	@media only screen and (min-width: 40.063em) and (min-height: 40.063em) {
+
+		/* Template - Navmenu */
+		#Grafik-Navmenu .Navigation ul a { line-height: 3rem; font-size: 3rem; }
+		#Grafik-Navmenu .Navigation ul ul a { line-height: 1.5rem; font-size: 1rem; }
+		#Grafik-Navmenu #hs-search-module .hs-input { line-height: 3rem; font-size: 3rem; }
+
+	}
+
+	/* LARGE AND UP HORIZONTALLY WITH MEDIUM AND UP VERTICALLY */
+	@media only screen and (min-width: 64.063em) and (min-height: 40.063em) {
+
+		/* Template - Navmenu */
+		#Grafik-Navmenu .Navigation ul a { line-height: 4rem; font-size: 4rem; }
+		#Grafik-Navmenu .Navigation ul ul a { line-height: 2rem; font-size: 1.5rem; }
+		#Grafik-Navmenu #hs-search-module .hs-input { line-height: 4rem; font-size: 4rem; }
 
 	}

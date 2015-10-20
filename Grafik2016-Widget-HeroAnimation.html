@@ -1,0 +1,47 @@
+<!--
+
+88  88 888888 8888o. .o88o.    .o88o. 8888o. 88 888888o. .o88o. 888888 88 .o88o. 8888o.
+88  88 88     88  88 88  88    88  88 88  88 88 88 88 88 88  88   88   88 88  88 88  88
+888888 8888   8888Y' 88  88    888888 88  88 88 88 88 88 888888   88   88 88  88 88  88
+88  88 88     88  88 88  88    88  88 88  88 88 88 88 88 88  88   88   88 88  88 88  88
+88  88 888888 88  88 'Y88Y'    88  88 88  88 88 88 88 88 88  88   88   88 'Y88Y' 88  88
+
+-->
+{% set small_classes = "{{ widget.small_offset }} {{ widget.small_size }}" %}
+{% set medium_classes = "{{ widget.medium_offset }} {{ widget.medium_size }}" %}
+{% set large_classes = "{{ widget.large_offset }} {{ widget.large_size }}" %}
+{% set stage_padding = widget.stage_height ? "padding-bottom:{{ widget.stage_height }};" : "" %}
+{% set stage_cliptop = widget.clip_top ? "margin-top:{{ widget.clip_top }};" : "" %}
+{% set stage_clipbottom = widget.clip_bottom ? "margin-bottom:{{ widget.clip_bottom }};" : "" %}
+<!-- Grafik2016 - HeroAnimation -->
+<section class="Theme-Widget Widget-HeroAnimation Override-HeroText">
+	<div class="HeroAnimation-Interior" style="margin:0 auto;max-width:1200px;overflow:hidden;">
+		<div class="Interior-Stage" style="position:relative;{{ stage_padding }}{{ stage_cliptop }}{{ stage_clipbottom }}">
+			<div class="Interior-Underlay" style="width:100%;height:100%;position:absolute;z-index:1;left:0;top:0;">
+				<canvas id="HeroAnimation-Canvas" width="1200px" height="800px" style="width:100%;height:100%;vertical-align:top;"></canvas>
+			</div>
+			<div class="Interior-Overlay Flex-Container {{ widget.overlay_alignment }}" style="width:100%;height:100%;position:absolute;z-index:2;left:0;top:0;">
+				<div class="Overlay-Content Flex-Item {{ small_classes }} {{ medium_classes }} {{ large_classes }}">{{ widget.overlay_content }}</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% if widget.animation_framework == "createjs" %}
+	<script src="{{ widget.library_directory }}easeljs-0.8.1.min.js"></script>
+	<script src="{{ widget.library_directory }}tweenjs-0.6.1.min.js"></script>
+	<script src="{{ widget.library_directory }}movieclip-0.8.1.min.js"></script>
+	<script src="{{ widget.animation_directory }}{{ widget.select_animation }}.js"></script>
+	<script>
+		var canvas, stage, exportRoot;
+		function init() {
+			canvas = document.getElementById("HeroAnimation-Canvas");
+			exportRoot = new lib.{{ widget.select_animation }}();
+			stage = new createjs.Stage(canvas);
+			stage.addChild(exportRoot);
+			stage.update();
+			createjs.Ticker.setFPS(lib.properties.fps);
+			createjs.Ticker.addEventListener("tick", stage);
+		}
+		init();
+	</script>
+{% endif %}

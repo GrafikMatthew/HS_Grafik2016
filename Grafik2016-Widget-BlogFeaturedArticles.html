@@ -1,0 +1,43 @@
+<!--
+
+8888o. 88     .o88o. .o8888    888888 888888 .o88o. 888888 88  88 8888o. 888888 8888o.    .o88o. 8888o. 888888 88 .o8888 88     888888 .o8888
+88  88 88     88  88 88        88     88     88  88   88   88  88 88  88 88     88  88    88  88 88  88   88   88 88     88     88     88    
+8888Y' 88     88  88 88  88    8888   8888   888888   88   88  88 8888Y' 8888   88  88    888888 8888Y'   88   88 88     88     8888   'Y88o.
+88  88 88     88  88 88  88    88     88     88  88   88   88  88 88  88 88     88  88    88  88 88  88   88   88 88     88     88         88
+8888Y' 888888 'Y88Y' 'Y8888    88     888888 88  88   88   'Y88Y' 88  88 888888 8888Y'    88  88 88  88   88   88 'Y8888 888888 888888 8888Y'
+
+-->
+{% if is_listing_view and not simple_list_page and current_page_num == 1 %}
+	{% set FeaturedPosts = blog_recent_topic_posts('Blog Sandbox', 'Featured', 2) %}
+	<!-- GRAFIK2016 - BlogFeaturedArticles -->
+	<section class="Theme-Widget Widget-BlogFeaturedArticles">
+		<div class="row BlogFeaturedArticles-Interior">
+			{% for FeaturedPost in FeaturedPosts %}
+				{% set first_topic = FeaturedPost.topic_list|first %}
+				{% if first_topic.name = "Featured" %}
+					{% set first_topic = FeaturedPost.topic_list[1] %}
+				{% endif %}
+				<div class="column medium-6">
+					<a href="{{ FeaturedPost.absolute_url }}">
+						<div class="Interior-FeaturedArticle" style="background:#000 url('{{ FeaturedPost.widgets.Grafik_BlogArticle_Grafik_PreviewImage.body.src }}') no-repeat 50% 50%;background-size:cover;">
+							<div class="Flex-Container Flex-Left Flex-Bottom FeaturedArticle-Container">
+								<div class="Flex-Item Container-Content">
+									<div class="Content-Info">
+										<ul class="Info-Topics"><li>{{ first_topic.name }}</li></ul>
+										<span class="Info-Separator">:</span>
+										<span class="Info-Date">{{ FeaturedPost.publish_date|datetimeformat('%d.%m.%Y') }}</span>
+									</div>
+									<div class="Content-Name">{{ FeaturedPost.name }}</div>
+									<div class="Content-Author">
+										<img src="{{ FeaturedPost.blog_post_author.avatar }}" alt="{{ FeaturedPost.blog_post_author.display_name }}" class="Author-Avatar" />
+										<span class="Author-Name">{{ FeaturedPost.blog_post_author.display_name }}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endif %}

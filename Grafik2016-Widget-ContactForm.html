@@ -7,7 +7,7 @@
 'Y8888 'Y88Y' 88  88   88   88  88 'Y8888   88      88     'Y88Y' 88  88 88 88 88
 
 -->
-<section id="{{ widget.section_customid }}" class="Theme-Widget Theme-ContactForm {{ widget.section_customclasses }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+<section {% if widget.section_customid %}id="{{ widget.section_customid }}"{% endif %} class="Theme-Widget Theme-ContactForm {{ widget.section_customclasses }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 	<div class="row Theme-Interior" style="{% if widget.section_bgtype == 'box' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 		<div class="small-offset-1 small-10 column end ContactForm">
 			<div class="Feedback">
@@ -23,8 +23,8 @@
 				</div>
 			</div>
 			<div class="Step01">
-				<div class="medium-6 column"><span class="h3 Button01">I want to hire <strong>you</strong></span></div>
-				<div class="medium-6 column end"><span class="h3 Button02">I want you to hire <strong>me</strong></span></div>
+				<div class="column medium-6 text-center"><span class="h4 Button01">I WANT TO <strong>HIRE GRAFIK</strong></span></div>
+				<div class="column end medium-6 text-center"><span class="h4 Button02">I WANT GRAFIK TO <strong>HIRE ME</strong></span></div>
 			</div>
 			<div class="Step02">
 				<hr/>
@@ -32,10 +32,9 @@
 				<div class="Type01">
 					<div class="medium-6 column">
 						<div class="h3 Heading">For...</div>
-						<div><input type="radio" id="ContactForm-Step02-Type01-Radio01-A" name="ContactForm-Step02-Type01-Radio01" value="Brand Strategy"><label for="ContactForm-Step02-Type01-Radio01-A" class="h4">Brand Strategy</label></div>
-						<div><input type="radio" id="ContactForm-Step02-Type01-Radio01-B" name="ContactForm-Step02-Type01-Radio01" value="Brand Identity"><label for="ContactForm-Step02-Type01-Radio01-B" class="h4">Brand Identity</label></div>
-						<div><input type="radio" id="ContactForm-Step02-Type01-Radio01-C" name="ContactForm-Step02-Type01-Radio01" value="Brand Engagement"><label for="ContactForm-Step02-Type01-Radio01-C" class="h4">Brand Engagement</label></div>
-						<div><input type="radio" id="ContactForm-Step02-Type01-Radio01-D" name="ContactForm-Step02-Type01-Radio01" value="All The Above"><label for="ContactForm-Step02-Type01-Radio01-D" class="h4">All The Above</label></div>
+						<div><input type="radio" id="ContactForm-Step02-Type01-Radio01-A" name="ContactForm-Step02-Type01-Radio01" value="Branding"><label for="ContactForm-Step02-Type01-Radio01-A" class="h4">Branding</label></div>
+						<div><input type="radio" id="ContactForm-Step02-Type01-Radio01-B" name="ContactForm-Step02-Type01-Radio01" value="Digital"><label for="ContactForm-Step02-Type01-Radio01-B" class="h4">Digital</label></div>
+						<div><input type="radio" id="ContactForm-Step02-Type01-Radio01-C" name="ContactForm-Step02-Type01-Radio01" value="Both"><label for="ContactForm-Step02-Type01-Radio01-C" class="h4">Both</label></div>
 					</div>
 					<div class="medium-6 column end">
 						<div class="h3 Heading"><strong>To...</strong></div>
@@ -50,14 +49,14 @@
 				<div class="Type02">
 					<div class="h3 Heading">As...</div>
 					<div class="medium-6 column">
-						<div><input type="radio" id="ContactForm-Step02-Type02-Radio01-A" name="ContactForm-Step02-Type02-Radio01" value="Copywriter"><label for="ContactForm-Step02-Type02-Radio01-A" class="h4">Copywriter</label></div>
-						<div><input type="radio" id="ContactForm-Step02-Type02-Radio01-B" name="ContactForm-Step02-Type02-Radio01" value="Designer"><label for="ContactForm-Step02-Type02-Radio01-B" class="h4">Designer</label></div>
-						<div><input type="radio" id="ContactForm-Step02-Type02-Radio01-C" name="ContactForm-Step02-Type02-Radio01" value="Art Director"><label for="ContactForm-Step02-Type02-Radio01-C" class="h4">Art Director</label></div>
-						<div><input type="radio" id="ContactForm-Step02-Type02-Radio01-D" name="ContactForm-Step02-Type02-Radio01" value="Web Developer"><label for="ContactForm-Step02-Type02-Radio01-D" class="h4">Web Developer</label></div>
+						<div><input type="radio" id="ContactForm-Step02-Type02-Radio01-A" name="ContactForm-Step02-Type02-Radio01" value="Copywriter"><label for="ContactForm-Step02-Type02-Radio01-A" class="h4">A Copywriter</label></div>
+						<div><input type="radio" id="ContactForm-Step02-Type02-Radio01-B" name="ContactForm-Step02-Type02-Radio01" value="Designer"><label for="ContactForm-Step02-Type02-Radio01-B" class="h4">A Designer</label></div>
+						<div><input type="radio" id="ContactForm-Step02-Type02-Radio01-C" name="ContactForm-Step02-Type02-Radio01" value="Art Director"><label for="ContactForm-Step02-Type02-Radio01-C" class="h4">An Art Director</label></div>
+						<div><input type="radio" id="ContactForm-Step02-Type02-Radio01-D" name="ContactForm-Step02-Type02-Radio01" value="Web Developer"><label for="ContactForm-Step02-Type02-Radio01-D" class="h4">A Web Developer</label></div>
 					</div>
 					<div class="medium-6 column">
-						<div><input type="radio" id="ContactForm-Step02-Type02-Radio01-E" name="ContactForm-Step02-Type02-Radio01" value="Strategist"><label for="ContactForm-Step02-Type02-Radio01-E" class="h4">Strategist</label></div>
-						<div><input type="radio" id="ContactForm-Step02-Type02-Radio01-F" name="ContactForm-Step02-Type02-Radio01" value="Account Manager"><label for="ContactForm-Step02-Type02-Radio01-F" class="h4">Account Manager</label></div>
+						<div><input type="radio" id="ContactForm-Step02-Type02-Radio01-E" name="ContactForm-Step02-Type02-Radio01" value="Strategist"><label for="ContactForm-Step02-Type02-Radio01-E" class="h4">A Strategist</label></div>
+						<div><input type="radio" id="ContactForm-Step02-Type02-Radio01-F" name="ContactForm-Step02-Type02-Radio01" value="Account Manager"><label for="ContactForm-Step02-Type02-Radio01-F" class="h4">An Account Manager</label></div>
 						<div><input type="radio" id="ContactForm-Step02-Type02-Radio01-G" name="ContactForm-Step02-Type02-Radio01" value="Other"><label for="ContactForm-Step02-Type02-Radio01-G" class="h4">Other</label></div>
 					</div>
 				</div>
@@ -113,7 +112,7 @@
 					<div class="h3 Heading">Additional Details...</div>
 					<div><textarea rows="20" cols="30" name="ContactForm-Step03-Type01-Text07" id="ContactForm-Step03-Type01-Text07" placeholder="My Project Details..."></textarea></div>
 					<hr/>
-					<button type="button" id="Submit-Type01">Show Me What You Can Do</button>
+					<button type="button" id="Submit-Type01">SHOW ME WHAT GRAFIK CAN DO</button>
 				</div>
 				<!-- Input Fields: I want you to hire me... -->
 				<div class="Type02">
@@ -127,9 +126,12 @@
 					<div><textarea rows="20" cols="30" name="ContactForm-Step03-Type02-Text06" id="ContactForm-Step03-Type02-Text06" placeholder="My Thoughts..." ></textarea></div>
 					<hr/>
 					<div class="h3 Heading">Check out my killer resum&eacute;!</div>
-					<div><button type="button" id="Attachment-Type02">Attach Resume Here</button></div>
+					<div>
+						<button type="button" id="Attachment-Type02">ATTACH RESUM&Eacute; HERE</button>
+						<span id="Attachment-Type02-Filename" style="padding: 0 2rem; text-align: center;"></span>
+					</div>
 					<hr/>
-					<div><button type="button" id="Submit-Type02">Hire Me</button></div>
+					<div><button type="button" id="Submit-Type02">HIRE ME</button></div>
 				</div>
 			</div>
 		</div>

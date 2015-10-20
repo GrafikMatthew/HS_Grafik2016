@@ -7,8 +7,9 @@
   88   88 888888 888888    'Y8888 88  88 88 8888Y'
 
 -->
+<!-- GRAFIK2016 - TileGrid -->
 {% macro GridTile(tile_size, tile_linkurl, tile_linktype, fx_hover, fx_hovercolor, bg_color, bg_image, alignment, text_color, text_title, text_titletype, text_body, button_text, button_type) %}
-	<div class="{{ tile_size }} column">
+    <div class="{{ tile_size }} column">
 		{% if tile_linkurl and tile_linktype == "tile" %}<a href="{{ tile_linkurl }}">{% endif %}
 		<div class="GridTile{% if fx_hover %} Hover-Effect{% endif %}">
 			{% if bg_color %}<div class="Background-Color" style="background:{{ bg_color }};"></div>{% endif %}
@@ -79,7 +80,7 @@
 	{% set tile_containersize = "large-12" %}
 	{% set tile_blocksize = widget.section_normaltype %}
 {% endif %}
-<section id="{{ widget.section_customid }}" class="Theme-Widget Theme-TileGrid {{ widget.section_customclasses }}" style="{% if widget.section_displaytype == "row" %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+<section {% if widget.section_customid %}id="{{ widget.section_customid }}"{% endif %} class="Theme-Widget Theme-TileGrid {{ widget.section_customclasses }}" style="{% if widget.section_displaytype == "row" %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 	<div class="row Theme-Interior" style="{% if widget.section_displaytype == "box" %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 		{% if (widget.section_featuredtype == "Left-Tall" or widget.section_featuredtype == "Left-Wide") and widget.section_featuredtype != "off" %}
 			{{ GridFeature(featured_containersize) }}

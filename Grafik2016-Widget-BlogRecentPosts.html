@@ -1,0 +1,71 @@
+<!--
+
+8888o. 88     .o88o. .o8888    8888o. 888888 .o8888 888888 8888o. 888888    8888o. .o88o. .o8888 888888 .o8888
+88  88 88     88  88 88        88  88 88     88     88     88  88   88      88  88 88  88 88       88   88    
+8888Y' 88     88  88 88  88    8888Y' 8888   88     8888   88  88   88      8888Y' 88  88 'Y88o.   88   'Y88o.
+88  88 88     88  88 88  88    88  88 88     88     88     88  88   88      88     88  88     88   88       88
+8888Y' 888888 'Y88Y' 'Y8888    88  88 888888 'Y8888 888888 88  88   88      88     'Y88Y' 8888Y'   88   8888Y'
+
+-->
+<style>
+	/* Blog Recent Posts */
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior { max-width: 1200px; border-top: 2px solid #ededed; background: #000; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .column { padding: 0; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Image { padding-bottom: 100%; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content { border-right: 1px solid #ededed; border-left: 1px solid #ededed; padding-bottom: 100%; background: #fff; position: relative; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview:nth-child(4n+1) .NormalPreview-Content { border-left: none; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview:nth-child(4n+4) .NormalPreview-Content { border-right: none; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; position: absolute; top: 1rem; left: 1rem; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Topics { display: inline-block; margin: 0; font-size: 0.75rem; list-style-type: none; vertical-align: middle; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Topics:after { content: ""; display: block; float: none; clear: both; height: 0; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Topics li { display: block; float: left; margin-right: 0.5rem; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Topics a { color: #000; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Topics a:hover { color: #f60; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Separator,
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Date { display: inline-block; margin-right: 0.5rem; vertical-align: middle; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Separator { color: #f60; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Date { color: #666; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Name { padding: 0 1rem; position: absolute; top: 3rem; left: 0rem; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Name a { line-height: 1.5rem; font-size: 1.5rem; font-weight: 500; color: #000; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Author { position: absolute; bottom: 1rem; left: 1rem; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Author .Author-Avatar { border-radius: 1.5rem; width: 3rem; height: 3rem; overflow: hidden; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Author .Author-Name { display: inline-block; margin-left: 1rem; line-height: 3rem; vertical-align: middle; white-space: nowrap; }
+	.Widget-BlogRecentPosts .BlogRecentPosts-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Topics a {
+		-webkit-transition: all 0.25s;
+		-moz-transition: all 0.25s;
+		-ms-transition: all 0.25s;
+		-o-transition: all 0.25s;
+		transition: all 0.25s;
+	}
+</style>
+{% if widget.source_method == 'date' %}{% set widget_posts = blog_recent_posts(widget.blog_source, 4) %}{% endif %}
+{% if widget.source_method == 'category' %}{% set widget_posts = blog_recent_topic_posts(widget.blog_source, widget.method_slug, 4) %}{% endif %}
+{% if widget.source_method == 'author' %}{% set widget_posts = blog_recent_author_posts(widget.blog_source, widget.method_slug, 4) %}{% endif %}
+<!-- Grafik2016 - BlogRecentPosts -->
+<section class="Theme-Widget Widget-BlogRecentPosts">
+	<div class="BlogRecentPosts-Interior row">
+		{% for widget_post in widget_posts %}
+			<div class="{% if widget_post == widget_posts|last %}end {% endif %}column medium-3 Interior-NormalPreview">
+				<a href="{{ widget_post.absolute_url }}">
+					<div class="NormalPreview-Image" style="background:#000 url('{{ widget_post.widgets.Grafik_BlogArticle_Grafik_PreviewImage.body.src }}') no-repeat 50% 50%;background-size:cover;">
+						<span style="display:none!important;"><img src="{{ widget_post.widgets.Grafik_BlogArticle_Grafik_PreviewImage.body.src }}" alt="{{ widget_post.widgets.Grafik_BlogArticle_Grafik_PreviewImage.body.alt }}" /></span>
+					</div>
+				</a>
+				<div class="NormalPreview-Content">
+					<div class="Content-Info">
+						{% set first_topic = widget_post.topic_list|first %}
+						{% if first_topic == "Featured" %}{% set first_topic = widget_post.topic_list[1] %}{% endif %}
+						<ul class="Info-Topics"><li><a href="{{ group.absolute_url }}/topic/{{ first_topic.slug }}">{{ first_topic.name }}</a></li></ul>
+						<span class="Info-Separator">:</span>
+						<span class="Info-Date">{{ widget_post.publish_date|datetimeformat('%d.%m.%Y') }}</span>
+					</div>
+					<div class="Content-Name"><a href="{{ widget_post.absolute_url }}">{{ widget_post.name }}</a></div>
+					<div class="Content-Author">
+						<img src="{{ widget_post.blog_post_author.avatar }}" alt="{{ widget_post.blog_post_author.display_name }}" class="Author-Avatar" />
+						<span class="Author-Name">{{ widget_post.blog_post_author.display_name }}</span>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</section>

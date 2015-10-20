@@ -1,0 +1,33 @@
+<!--
+
+8888o. 88     .o88o. .o8888    .o8888 .o88o. 888888 888888 .o8888 .o88o. 8888o. 88 888888 .o8888
+88  88 88     88  88 88        88     88  88   88   88     88     88  88 88  88 88 88     88    
+8888Y' 88     88  88 88  88    88     888888   88   8888   88  88 88  88 8888Y' 88 8888   'Y88o.
+88  88 88     88  88 88  88    88     88  88   88   88     88  88 88  88 88  88 88 88         88
+8888Y' 888888 'Y88Y' 'Y8888    'Y8888 88  88   88   888888 'Y8888 'Y88Y' 88  88 88 888888 8888Y'
+
+-->
+{% if is_listing_view %}
+	{% set BlogTopics = blog_topics('Blog Sandbox') %}
+	<!-- GRAFIK2016 - BlogCategories -->
+	<section class="Theme-Widget Widget-BlogCategories">
+		<div class="row BlogCategories-Interior PadHalf-Top PadHalf-Bottom">
+			<span class="Interior-Label">Category</span>
+			<ul class="Interior-Links">
+				<li {% if simple_list_page %}class="active"{% endif %}><a href="{{ group.absolute_url }}/all">All</a></li>
+				{% for BlogTopic in BlogTopics %}
+					<li{% if content_topic.slug == BlogTopic %} class="active"{% endif %}><a href="{{ group.absolute_url }}/topic/{{ BlogTopic.slug }}">{{ BlogTopic.name }}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+	</section>
+	<script type="text/javascript">
+		// Alphabetize the Blog Categories
+		var BlogCategories_UL = $('ul.Interior-Links');
+		var BlogCategories_All = $(BlogCategories_UL.children('li').get(0)).detach();
+		var BlogCategories_LIs = BlogCategories_UL.children('li').get();
+		BlogCategories_LIs.sort(function(a, b) { return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase()); });
+		$.each(BlogCategories_LIs, function(idx, itm) { BlogCategories_UL.append(itm); });
+		BlogCategories_All.prependTo(BlogCategories_UL);
+	</script>
+{% endif %}

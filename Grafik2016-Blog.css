@@ -1,0 +1,169 @@
+
+/* Blog Featured */
+
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior { max-width: 1200px; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .column { padding: 0; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle { padding-bottom: 100%; position: relative; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content { margin: 1rem; width: calc(50% - 2rem); height: calc(50% - 2rem); background: rgba(0,0,0,0.75); color: #fff; position: relative; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Info { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; position: absolute; top: 1rem; left: 1rem; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Info .Info-Topics { display: inline-block; margin: 0; font-size: 0.75rem; list-style-type: none; vertical-align: middle; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Info .Info-Topics:after { content: ""; display: block; float: none; clear: both; height: 0; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Info .Info-Topics li { display: block; float: left; margin-right: 0.5rem; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Info .Info-Topics a { color: #fff; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Info .Info-Topics a:hover { color: #fff; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Info .Info-Separator,
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Info .Info-Date { display: inline-block; margin-right: 0.5rem; vertical-align: middle; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Info .Info-Separator { color: #fff; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Info .Info-Date { color: #fff; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Name { padding: 0 1rem; line-height: 1.5rem; font-size: 1.5rem; font-weight: 500; color: #fff; position: absolute; top: 3rem; left: 0rem; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Author { position: absolute; bottom: 1rem; left: 1rem; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Author .Author-Avatar { border-radius: 1.5rem; width: 3rem; height: 3rem; overflow: hidden; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Author .Author-Name { display: inline-block; margin-left: 1rem; line-height: 3rem; vertical-align: middle; white-space: nowrap; }
+	.Widget-BlogFeaturedArticles .BlogFeaturedArticles-Interior .Interior-FeaturedArticle .FeaturedArticle-Container .Container-Content .Content-Info .Info-Topics a {
+		-webkit-transition: all 0.25s;
+		-moz-transition: all 0.25s;
+		-ms-transition: all 0.25s;
+		-o-transition: all 0.25s;
+		transition: all 0.25s;
+	}
+
+/* Blog Categories */
+
+	.Widget-BlogCategories .BlogCategories-Interior { max-width: 1200px; font-weight: 500; text-align: center; text-transform: uppercase; background: #fff; }
+	.Widget-BlogCategories .BlogCategories-Interior .Interior-Label { line-height: 1.5rem; font-size: 0.75rem; }
+	.Widget-BlogCategories .BlogCategories-Interior .Interior-Links { display: inline; margin: 0; list-style-type: none; }
+	.Widget-BlogCategories .BlogCategories-Interior .Interior-Links li { display: inline; margin-left: 0.5rem; }
+	.Widget-BlogCategories .BlogCategories-Interior .Interior-Links li.active a { background: #666; color: #fff; }
+	.Widget-BlogCategories .BlogCategories-Interior .Interior-Links li a:hover { background: #f60; color: #fff; }
+	.Widget-BlogCategories .BlogCategories-Interior .Interior-Links li a { display: inline-block; border-radius: 0.75rem; padding: 0 0.75rem; line-height: 1.5rem; font-size: 0.75rem; background: #ededed; color: #666; }
+	.Widget-BlogCategories .BlogCategories-Interior .Interior-Links li a {
+		-webkit-transition: all 0.25s;
+		-moz-transition: all 0.25s;
+		-ms-transition: all 0.25s;
+		-o-transition: all 0.25s;
+		transition: all 0.25s;
+	}
+
+/* Blog Previews */
+
+	.Widget-BlogPreviews .BlogPreviews-Interior { max-width: 1200px; border-top: 2px solid #ededed; background: #000; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .column { padding: 0; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-SimplePreview { background: #fff; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-SimplePreview a { font-size: 2rem; line-height: 2.2rem; font-weight: 500; color: #000; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Image { padding-bottom: 100%; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content { border-right: 1px solid #ededed; border-left: 1px solid #ededed; padding-bottom: 100%; background: #fff; position: relative; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview:nth-child(4n+1) .NormalPreview-Content { border-left: none; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview:nth-child(4n+4) .NormalPreview-Content { border-right: none; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; position: absolute; top: 1rem; left: 1rem; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Topics { display: inline-block; margin: 0; font-size: 0.75rem; list-style-type: none; vertical-align: middle; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Topics:after { content: ""; display: block; float: none; clear: both; height: 0; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Topics li { display: block; float: left; margin-right: 0.5rem; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Topics a { color: #000; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Topics a:hover { color: #f60; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Separator,
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Date { display: inline-block; margin-right: 0.5rem; vertical-align: middle; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Separator { color: #f60; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Date { color: #666; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Name { padding: 0 1rem; position: absolute; top: 3rem; left: 0rem; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Name a { line-height: 1.5rem; font-size: 1.5rem; font-weight: 500; color: #000; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Author { position: absolute; bottom: 1rem; left: 1rem; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Author .Author-Avatar { border-radius: 1.5rem; width: 3rem; height: 3rem; overflow: hidden; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Author .Author-Name { display: inline-block; margin-left: 1rem; line-height: 3rem; vertical-align: middle; white-space: nowrap; }
+	.Widget-BlogPreviews .BlogPreviews-Interior .Interior-NormalPreview .NormalPreview-Content .Content-Info .Info-Topics a {
+		-webkit-transition: all 0.25s;
+		-moz-transition: all 0.25s;
+		-ms-transition: all 0.25s;
+		-o-transition: all 0.25s;
+		transition: all 0.25s;
+	}
+
+/* Blog Pagination */
+
+	.Widget-BlogPagination .BlogPagination-Interior { border-top: 2px solid #ededed; max-width: 1200px; font-weight: 500; text-align: center; text-transform: uppercase; background: #fff; }
+	.Widget-BlogPagination .BlogPagination-Interior:before { content: ""; clear: both; display: block; float: none; height: 0; }
+	.Widget-BlogPagination .BlogPagination-Interior .Interior-Links { display: inline; margin: 0; list-style-type: none; }
+	.Widget-BlogPagination .BlogPagination-Interior .Interior-Links li { display: inline; margin-left: 0.5rem; }
+	.Widget-BlogPagination .BlogPagination-Interior .Interior-Links li.active a { background: #666; color: #fff; }
+	.Widget-BlogPagination .BlogPagination-Interior .Interior-Links li a:hover { background: #f60; color: #fff; }
+	.Widget-BlogPagination .BlogPagination-Interior .Interior-Links li a { display: inline-block; border-radius: 1rem; padding: 0 1rem; min-width: 4rem; line-height: 2rem; background: #ededed; color: #666; }
+	.Widget-BlogPagination .BlogPagination-Interior .Interior-Links li > span:hover { border-color: #f60; color: #f60; }
+	.Widget-BlogPagination .BlogPagination-Interior .Interior-Links li > span { display: inline-block; border: 2px solid #dedede; border-radius: 1rem; padding: 0 calc(1rem - 2px); min-width: 4rem; line-height: calc(2rem - 4px); color: #dedede; cursor: pointer; }
+	.Widget-BlogPagination .BlogPagination-Interior .Interior-Links li a,
+	.Widget-BlogPagination .BlogPagination-Interior .Interior-Links li > span {
+		-webkit-transition: all 0.25s;
+		-moz-transition: all 0.25s;
+		-ms-transition: all 0.25s;
+		-o-transition: all 0.25s;
+		transition: all 0.25s;
+	}
+
+/* Blog Article */
+
+	.Widget-BlogArticle .BlogArticle-Interior { max-width: 1200px; background: #fff; }
+	.Widget-BlogArticle .BlogArticle-Interior .Interior-Name:after,
+	.Widget-BlogArticle .BlogArticle-Interior .Interior-Info:after,
+	.Widget-BlogArticle .BlogArticle-Interior .Interior-Body:after { content: ""; clear: both; display: block; float: none; height: 0; }
+	.Widget-BlogArticle .BlogArticle-Interior .Interior-Info { font-weight: 500; }
+	.Widget-BlogArticle .BlogArticle-Interior .Interior-Info .Info-Author { display: block; float: left; }
+	.Widget-BlogArticle .BlogArticle-Interior .Interior-Info .Info-Author .Author-Avatar,
+	.Widget-BlogArticle .BlogArticle-Interior .Interior-Info .Info-Author .Author-Name { display: block; float: left; margin-right: 1rem; line-height: 80px; }
+	.Widget-BlogArticle .BlogArticle-Interior .Interior-Info .Info-Author .Author-Avatar img { border-radius: 50%; width: 80px; height: 80px; overflow: hidden; }
+	.Widget-BlogArticle .BlogArticle-Interior .Interior-Info .Info-Timestamp { line-height: 80px; }
+	.Widget-BlogArticle .BlogArticle-Interior .Interior-Info .Info-Timestamp:before { content: "—"; display: block; float: left; line-height: 80px; margin-right: 1rem; }
+
+/* Blog Article Categories */
+
+	.Widget-BlogArticleCategories .BlogArticleCategories-Interior { border-top: 2px solid #ededed; max-width: 1200px; font-weight: 500; text-align: center; text-transform: uppercase; background: #fff; }
+	.Widget-BlogArticleCategories .BlogArticleCategories-Interior .Interior-Label { line-height: 1.5rem; font-size: 0.75rem; }
+	.Widget-BlogArticleCategories .BlogArticleCategories-Interior .Interior-Icons { display: inline; margin: 0; list-style-type: none; }
+	.Widget-BlogArticleCategories .BlogArticleCategories-Interior .Interior-Icons li { display: inline; margin-left: 0.5rem; }
+	.Widget-BlogArticleCategories .BlogArticleCategories-Interior .Interior-Icons li.active a { background: #666; color: #fff; }
+	.Widget-BlogArticleCategories .BlogArticleCategories-Interior .Interior-Icons li a:hover { background: #f60; color: #fff; }
+	.Widget-BlogArticleCategories .BlogArticleCategories-Interior .Interior-Icons li a { display: inline-block; border-radius: 0.75rem; padding: 0 0.75rem; line-height: 1.5rem; font-size: 0.75rem; background: #ededed; color: #666; }
+
+/* Blog Walker */
+
+	.Widget-BlogWalker .BlogWalker-Interior { max-width: 1200px; }
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button { padding: 0 0 33.3333333333% 0; position: relative; }
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Prev,
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Main,
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Next { width: 100%; height: 100%; background-size: 100% !important; position: absolute; top: 0; left: 0;
+		-webkit-transition: all 0.5s;
+		-moz-transition: all 0.5s;
+		-ms-transition: all 0.5s;
+		-o-transition: all 0.5s;
+		transition: all 0.5s;
+	}
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Prev .Prev-Overlay,
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Main .Main-Overlay,
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Next .Next-Overlay { width: 100%; height: 100%; position: absolute; z-index: 1; top: 0; left: 0; background: #000; opacity: 0.9;
+		-webkit-transition: all 0.5s;
+		-moz-transition: all 0.5s;
+		-ms-transition: all 0.5s;
+		-o-transition: all 0.5s;
+		transition: all 0.5s;
+	}
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Prev:hover,
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Main:hover,
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Next:hover { background-size: 110% !important; }
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Prev:hover .Prev-Overlay,
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Main:hover .Main-Overlay,
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Next:hover .Next-Overlay { opacity: 0.5;
+		-webkit-transform: scale(0.9);
+		-moz-transform: scale(0.9);
+		-ms-transform: scale(0.9);
+		-o-transform: scale(0.9);
+		transform: scale(0.9);
+	}
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Prev .Prev-Label,
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Main .Main-Label,
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Next .Next-Label { padding: 0 2rem; position: relative; z-index: 2; }
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Prev .Prev-Label .Label-Direction,
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Main .Main-Label .Label-Direction,
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Next .Next-Label .Label-Direction { height: 3rem; line-height: 3rem; font-weight: 500; color: #999; }
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Main .Main-Label .Label-Direction { background: url('http://cdn2.hubspot.net/hubfs/505301/images/blog/grafik-blog-icon.png') no-repeat 50% 50%; background-size: 37px 37px; }
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Prev .Prev-Label .Label-Name,
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Main .Main-Label .Label-Name,
+	.Widget-BlogWalker .BlogWalker-Interior .Interior-Button .Button-Next .Next-Label .Label-Name { font-size: 1.5rem; font-weight: 500; color: #fff; }
+

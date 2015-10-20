@@ -129,6 +129,12 @@
 		$('#Attachment-Type02').on("click", function() {
 			$('#Grafik2016-EmployeeForm form [name="resume"]').trigger("click");
 		});
+		var Attachment_Type02_Interval = setInterval(function() {
+			var AttachmentField = $('#Grafik2016-EmployeeForm form [name="resume"]');
+			if( AttachmentField.length < 1 ) return false;
+			var AttachmentName = AttachmentField.val().split('\\');
+			$("#Attachment-Type02-Filename").html( AttachmentName[AttachmentName.length - 1] );
+		}, 10);
 		// Submit...
 		$("#Submit-Type01").on("click", function() {
 			$('#Grafik2016-ClientForm form [name="hire_us_for"] option').prop("selected", false);
@@ -280,5 +286,42 @@
 	console.info(" 88  88  8888Y'  888888  8888    88  8888'       88      88  88  88  88  88 ");
 	console.info(" 88  88  88  88  88  88  88      88  88 '8.      88      88  88  88  88  88 ");
 	console.info(" 'Y8888  88  88  88  88  88      88  88  88  88  'Y8888  'Y88Y'  88  88  88 ");
+
+})(jQuery);
+
+(function($){
+
+	if(location.pathname != "/") {
+
+		/* Subnav Fade-In */
+
+		var Mantra;
+		var Header, HeaderClone;
+		var Offset = 50;
+
+		$(document).on({
+			'ready' : function() {
+				Mantra = $('#Grafik-Navbar .Mantra');
+				Header = $( $('.MantraReplacement').get(0) );
+				if(!Header.length) return;
+				HeaderClone = Header.clone().appendTo('#Grafik-Navbar .Branding').css({
+					'display' : 'inline-block',
+					'margin' : '0 0 0 1rem',
+					'line-height' : '50px',
+					'vertical-align' : 'top',
+					'color' : '#999999'
+				}).hide();
+			},
+			'scroll touchmove' : function() {
+				if(!Header.length) return;
+				if( Header.offset().top - Offset < $(document).scrollTop() ) {
+					Mantra.fadeOut(250, function() { HeaderClone.fadeIn(250); });
+				} else {
+					HeaderClone.fadeOut(250, function() { Mantra.fadeIn(250); });
+				}
+			}
+		});
+
+	}
 
 })(jQuery);

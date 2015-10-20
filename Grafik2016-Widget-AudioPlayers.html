@@ -42,7 +42,7 @@
 		{% endif %}
 	</div>
 {% endmacro %}
-<section id="{{ widget.custom_id }}" class="Theme-Widget Theme-AudioPlayers {{ widget.custom_class }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+<section {% if widget.custom_id %}id="{{ widget.custom_id }}"{% endif %} class="Theme-Widget Theme-AudioPlayers {{ widget.custom_class }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 	<div class="row Theme-Interior" style="{% if widget.section_bgtype == 'box' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 		{% if widget.section_playercount >= 1 %}{{ AudioPlayer(push_size, widget.audio01_file) }}{% endif %}
 		{% if widget.section_playercount >= 2 %}{{ AudioPlayer(push_size, widget.audio02_file) }}{% endif %}

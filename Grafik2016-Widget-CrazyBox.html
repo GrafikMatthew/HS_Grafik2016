@@ -7,7 +7,8 @@
 'Y8888 88  88 88  88 888888 8888Y'    8888Y' 'Y88Y' 88  88
 
 -->
-<section id="{{ widget.section_customid }}" class="Theme-Widget Theme-CrazyBox {{ widget.section_customclasses }}" style="{% if widget.section_bgstyle == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}">
+<!-- Grafik2016 - CrazyBox -->
+<section {% if widget.section_customid %}id="{{ widget.section_customid }}"{% endif %} class="Theme-Widget Theme-CrazyBox {{ widget.section_customclasses }}" style="{% if widget.section_bgstyle == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}">
 	<div class="row Theme-Interior" style="{% if widget.section_bgstyle == 'box' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}">
 		<div class="PaddingBox" style="{% if widget.section_edgeheight %}padding:{{ widget.section_edgeheight }} 0;{% endif %}">
 			<div class="AccentBox {{ widget.section_accentoffset }} {{ widget.section_accentwidth }}" style="background:{{ widget.section_accentcolor }} url('{{ widget.section_accentimage.src }}') no-repeat 50% 50%; background-size: cover;"></div>

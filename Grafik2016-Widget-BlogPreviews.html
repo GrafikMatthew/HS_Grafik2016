@@ -1,0 +1,46 @@
+<!--
+
+8888o. 88     .o88o. .o8888    8888o. 8888o. 888888 88  88 88 888888 88 88 88 .o8888
+88  88 88     88  88 88        88  88 88  88 88     88  88 88 88     88 88 88 88    
+8888Y' 88     88  88 88  88    8888Y' 8888Y' 8888   88  88 88 8888   88 88 88 'Y88o.
+88  88 88     88  88 88  88    88     88  88 88     88 .8' 88 88     88 88 88     88
+8888Y' 888888 'Y88Y' 'Y8888    88     88  88 888888 888'   88 888888 888888Y' 8888Y'
+
+-->
+{% if is_listing_view %}
+	<!-- Grafik2016 - BlogPreviews -->
+	<section class="Theme-Widget Widget-BlogPreviews">
+		<div class="row BlogPreviews-Interior">
+			{% for object in contents.objects %}
+				{% if simple_list_page %}
+					<div class="Interior-SimplePreview PadHalf-Top">
+						<div class="small-offset-1 small-10"><a href="{{ object.absolute_url }}">{{ object.name }}</a></div>
+					</div>
+				{% else %}
+					<div class="{% if object == contents.objects|last %}end {% endif %}column medium-3 Interior-NormalPreview">
+						<a href="{{ object.absolute_url }}">
+							<div class="NormalPreview-Image" style="background:#000 url('{{ object.widgets.Grafik_BlogArticle_Grafik_PreviewImage.body.src }}') no-repeat 50% 50%;background-size:cover;">
+								<span style="display:none!important;"><img src="{{ object.widgets.Grafik_BlogArticle_Grafik_PreviewImage.body.src }}" alt="{{ object.widgets.Grafik_BlogArticle_Grafik_PreviewImage.body.alt }}" /></span>
+							</div>
+						</a>
+						<div class="NormalPreview-Content">
+							<div class="Content-Info">
+								{% set first_topic = object.topic_list|first %}
+								<ul class="Info-Topics"><li><a href="{{ group.absolute_url }}/topic/{{ first_topic.slug }}">{{ first_topic.name }}</a></li></ul>
+								<span class="Info-Separator">:</span>
+								<span class="Info-Date">{{ object.publish_date|datetimeformat('%d.%m.%Y') }}</span>
+							</div>
+							<div class="Content-Name">
+								<a href="{{ object.absolute_url }}">{{ object.name }}</a>
+							</div>
+							<div class="Content-Author">
+								<img src="{{ object.blog_post_author.avatar }}" alt="{{ object.blog_post_author.display_name }}" class="Author-Avatar" />
+								<span class="Author-Name">{{ object.blog_post_author.display_name }}</span>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</section>
+{% endif %}

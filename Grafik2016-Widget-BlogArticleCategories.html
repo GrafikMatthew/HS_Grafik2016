@@ -1,0 +1,18 @@
+<!--
+
+8888o. 88     .o88o. .o8888    .o88o. 8888o. 888888 88 .o8888 88     888888    .o8888 .o88o. 888888 888888 .o8888 .o88o. 8888o. 88 888888 .o8888
+88  88 88     88  88 88        88  88 88  88   88   88 88     88     88        88     88  88   88   88     88     88  88 88  88 88 88     88    
+8888Y' 88     88  88 88  88    888888 8888Y'   88   88 88     88     8888      88     888888   88   8888   88  88 88  88 8888Y' 88 8888   'Y88o.
+88  88 88     88  88 88  88    88  88 88  88   88   88 88     88     88        88     88  88   88   88     88  88 88  88 88  88 88 88         88
+8888Y' 888888 'Y88Y' 'Y8888    88  88 88  88   88   88 'Y8888 888888 888888    'Y8888 88  88   88   888888 'Y8888 'Y88Y' 88  88 88 888888 8888Y'
+
+-->
+{% if not is_listing_view %}
+	<!-- GRAFIK2016 - BlogArticleCategories -->
+	<section class="Theme-Widget Widget-BlogArticleCategories">
+		<div class="row BlogArticleCategories-Interior PadHalf-Top PadFull-Bottom">
+			<span class="Interior-Label">More Like This</span>
+			<ul class="Interior-Icons">{% for article_topic in content.topic_list %}<li><a href="{{ article_topic.slug }}">{{ article_topic.name }}</a></li>{% endfor %}</ul>
+		</div>
+	</section>
+{% endif %}

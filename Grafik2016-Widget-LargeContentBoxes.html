@@ -9,7 +9,7 @@
 -->
 {% macro LargeContentBox(behavior, customheight, bgcolor, bgimage, headingtext, headingtype, bodytext, bodycolor, bodytype, bodywidth, bodyoffset, buttontext, buttontype, linkurl, linktype, alignment, videomp4, videowebm, autoplay, loop) %}
 	{% if linktype == "tile" %}<a href="{{ linkurl }}">{% endif %}
-		<div class="medium-6 column">
+		<div class="medium-6 column {% if not bgimage %}No-Image{% endif %}">
 			<div class="Tile {{ behavior }}" style="{% if behavior == 'Custom' %}height:{{ customheight }};{% endif %}background:{{ bgcolor }} url('{{ bgimage }}') no-repeat 50% 50%;background-size:cover;">
 				{% if videowebm or videomp4 %}
 					<video class="Tile-Video" poster="{% if bgimage %}{{ bgimage }}{% endif %}" {{ autoplay }} {{ loop }} muted>
@@ -38,7 +38,7 @@
 		</div>
 	{% if linktype == "tile" %}</a>{% endif %}
 {% endmacro %}
-<section id="{{ widget.custom_id }}" class="Theme-Widget Theme-LargeContentBoxes {{ widget.custom_class }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+<section {% if widget.custom_id %}id="{{ widget.custom_id }}"{% endif %} class="Theme-Widget Theme-LargeContentBoxes {{ widget.custom_class }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 	<div class="row Theme-Interior" style="{% if widget.section_bgtype == 'box' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 		{{ LargeContentBox(
 			widget.tile_behavior, widget.section_customtileheight,

@@ -1,0 +1,54 @@
+<!--
+
+8888o. 88     .o88o. .o8888    88 88 88 .o88o. 88     88  88 888888 8888o.
+88  88 88     88  88 88        88 88 88 88  88 88     88 .8' 88     88  88
+8888Y' 88     88  88 88  88    88 88 88 888888 88     8888'  8888   8888Y'
+88  88 88     88  88 88  88    88 88 88 88  88 88     88 '8. 88     88  88
+8888Y' 888888 'Y88Y' 'Y8888    888888Y' 88  88 888888 88  88 888888 88  88
+
+-->
+{% macro ArticleWalkerObject(URL, ClassFragment, LabelDirection, LabelName, BackgroundImage) %}
+	<div class="column medium-4 Interior-Button">
+		<a href="{{ URL }}">
+			<div class="Flex-Container Button-{{ ClassFragment }}" style="background:#000 url('{{ BackgroundImage }}') no-repeat 50% 50%;background-size:cover;">
+				<div class="{{ ClassFragment }}-Overlay"></div>
+				<div class="Flex-Item {{ ClassFragment }}-Label">
+					<div class="Label-Direction">{{ LabelDirection }}</div>
+					<div class="Label-Name">{{ LabelName }}</div>
+				</div>
+			</div>
+		</a>
+	</div>
+{% endmacro %}
+{% if not is_listing_view %}
+	{% set aw_btpc = blog_total_post_count(content.parent_blog.id) %}
+	{% set aw_posts = blog_recent_posts(content.parent_blog.name, aw_btpc) %}
+	<!-- GRAFIK2016 - BlogWalker -->
+	<section id="Grafik-BlogWalker" class="Theme-Widget Widget-BlogWalker">
+		<div class="row BlogWalker-Interior">
+			{% if not content.previous_post_slug %}
+				{% set aw_prev_post = aw_posts|first %}
+				{{ ArticleWalkerObject(aw_prev_post.absolute_url, "Prev", "Previous Article", aw_prev_post.name, aw_prev_post.widgets.Grafik_BlogArticle_Grafik_PreviewImage.body.src) }}
+			{% else %}
+				{% for aw_post in aw_posts %}
+					{% if aw_post.slug == content.previous_post_slug %}
+						{% set aw_prev_post = aw_post %}
+						{{ ArticleWalkerObject(aw_prev_post.absolute_url, "Prev", "Previous Article", aw_prev_post.name, aw_prev_post.widgets.Grafik_BlogArticle_Grafik_PreviewImage.body.src) }}
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+			{{ ArticleWalkerObject(group.absolute_url, "Main", "", "Blog Main", content.widgets.Grafik_BlogArticle_Grafik_PreviewImage.body.src) }}
+			{% if not content.next_post_slug %}
+				{% set aw_next_post = aw_posts|last %}
+				{{ ArticleWalkerObject(aw_next_post.absolute_url, "Next", "Next Article", aw_next_post.name, aw_next_post.widgets.Grafik_BlogArticle_Grafik_PreviewImage.body.src) }}
+			{% else %}
+				{% for aw_post in aw_posts %}
+					{% if aw_post.slug == content.next_post_slug %}
+						{% set aw_next_post = aw_post %}
+						{{ ArticleWalkerObject(aw_next_post.absolute_url, "Next", "Next Article", aw_next_post.name, aw_next_post.widgets.Grafik_BlogArticle_Grafik_PreviewImage.body.src) }}
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		</div>
+	</section>
+{% endif %}

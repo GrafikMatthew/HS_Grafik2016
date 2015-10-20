@@ -7,9 +7,10 @@
 8888Y'     88 'Y88Y' 88  88 88  88 888888    88  88 888888 'Y8888   88  
 
 -->
-<section id="{{ widget.custom_id }}" class="Theme-Widget Theme-SquareRect {{ widget.custom_class }}" style="{% if widget.background_style == 'row' %}background:{{ widget.background_color }} url('{{ widget.background_image.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}">
+<!-- GRAFIK2016 - SquareRect -->
+<section {% if widget.custom_id %}id="{{ widget.custom_id }}"{% endif %} class="Theme-Widget Theme-SquareRect {{ widget.custom_class }}" style="{% if widget.background_style == 'row' %}background:{{ widget.background_color }} url('{{ widget.background_image.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}">
 	<div class="row Theme-Interior" style="{% if widget.background_style == 'box' %}background:{{ widget.background_color }} url('{{ widget.background_image.src }}') no-repeat 50% 50%;background-size:cover;{% endif %}">
-		<div class="column medium-{% if widget.section_layout == 'Square-Left' %}4{% else %}8{% endif %} SquareRect-Left {% if not widget.left_bgimage.src %}SquareRect-NoImage{% endif %}" style="background:{{ widget.left_bgcolor }} url('{{ widget.left_bgimage.src }}') no-repeat 50% 50%;background-size:cover;">
+		<div class="column medium-{% if widget.section_layout == 'Square-Left' %}4{% else %}8{% endif %} SquareRect-Left {% if not widget.left_bgimage.src %}No-Image{% endif %} {% if not widget.left_videowebm and not widget.left_videomp4 %}No-Video{% endif %}" style="background:{{ widget.left_bgcolor }} url('{{ widget.left_bgimage.src }}') no-repeat 50% 50%;background-size:cover;">
 			{% if widget.left_videowebm or widget.left_videomp4 %}
 				<video class="Video" {% if widget.left_bgimage.src %}cover="{{ widget.left_bgimage.src }}"{% endif %} autoplay loop muted>
 					{% if widget.left_videowebm %}<source src="{{ widget.left_videowebm }}" type="video/webm">{% endif %}
@@ -23,7 +24,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="column medium-{% if widget.section_layout == 'Square-Left' %}8{% else %}4{% endif %} SquareRect-Right {% if not widget.right_bgimage.src %}SquareRect-NoImage{% endif %}" style="background:{{ widget.right_bgcolor }} url('{{ widget.right_bgimage.src }}') no-repeat 50% 50%;background-size:cover;">
+		<div class="column medium-{% if widget.section_layout == 'Square-Left' %}8{% else %}4{% endif %} SquareRect-Right {% if not widget.right_bgimage.src %}No-Image{% endif %} {% if not widget.right_videowebm and not widget.right_videomp4 %}No-Video{% endif %}" style="background:{{ widget.right_bgcolor }} url('{{ widget.right_bgimage.src }}') no-repeat 50% 50%;background-size:cover;">
 			{% if widget.right_videowebm or widget.right_videomp4 %}
 				<video class="Video" {% if widget.right_bgimage.src %}cover="{{ widget.right_bgimage.src }}"{% endif %} autoplay loop muted>
 					{% if widget.right_videowebm %}<source src="{{ widget.right_videowebm }}" type="video/webm">{% endif %}

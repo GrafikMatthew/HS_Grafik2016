@@ -1,0 +1,22 @@
+<!--
+
+.o8888 88  88 .o88o. 8888o. 888888    8888o. .o88o. .o8888 888888
+88     88  88 88  88 88  88 88        88  88 88  88 88     88    
+'Y88o. 888888 888888 8888Y' 8888      8888Y' 888888 88  88 8888  
+    88 88  88 88  88 88  88 88        88     88  88 88  88 88    
+8888Y' 88  88 88  88 88  88 888888    88     88  88 'Y8888 888888
+
+-->
+<!-- GRAFIK2016 - SharePage -->
+<section class="Theme-Widget Widget-SharePage">
+	<div class="row SharePage-Interior PadHalf-Top PadHalf-Bottom">
+		<div class="column medium-offset-1 medium-2 small-only-text-center h4 Interior-Label">Share</div>
+		<ul class="end column medium-6 Interior-Icons">
+			<li><a href="//twitter.com/intent/tweet?text={{ 'I just saw this on grafik.com' }}+{{ content.absolute_url|urlencode }}" target="_blank" class="Icon-M Twitter" title="Share this page on Twitter"><span class="Name">Share this page on Twitter</span><span class="Effect"></span></a></li>
+			<li><a href="//facebook.com/sharer/sharer.php?u={{ content.absolute_url|urlencode }}" target="_blank" class="Icon-M Facebook" title="Share this page on Facebook"><span class="Name">Share this page on Facebook</span><span class="Effect"></span></a></li>
+			<li><a href="//linkedin.com/shareArticle?mini=true&amp;url={{ content.absolute_url|urlencode }}&amp;title={{ name|urlencode }}&amp;summary={{ 'I just saw this on grafik.com'|urlencode }}&amp;source=GRAFIK" target="_blank" class="Icon-M LinkedIn" title="Share this page on LinkedIn"><span class="Name">Share this page on LinkedIn</span><span class="Effect"></span></a></li>
+			<li><a href="//plus.google.com/share?url={{ content.absolute_url|urlencode }}" target="_blank" class="Icon-M GooglePlus" title="Share this page on Google+"><span class="Name">Share this page on Google+</span><span class="Effect"></span></a></li>
+			<li><a href="mailto:?subject={{ name }}&amp;body={{ 'I just saw this on grafik.com' }}%0D%0A{{ content.absolute_url|urlencode }}" class="Icon-M Email" title="Share this page by Email"><span class="Name">Share this page by Email</span><span class="Effect"></span></a></li>
+		</ul>
+	</div>
+</section>

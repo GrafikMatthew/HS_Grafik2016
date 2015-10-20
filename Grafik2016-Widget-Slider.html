@@ -7,6 +7,7 @@
 8888Y' 888888 88 8888Y' 888888 88  88
 
 -->
+<!-- GRAFIK2016 - Slider -->
 {% macro OrbitSlide(slide_orbitid, slide_color, slide_image, slide_videowebm, slide_videomp4, slide_bodyalign, slide_bodyoffset, slide_bodywidth, slide_headingtype, slide_headingcolor, slide_headingtext, slide_contentcolor, slide_contenttext) %}
 	<li class="Slide" data-orbit-slide="{{ slide_orbitid }}">
 		<div class="SlideLayers">
@@ -30,7 +31,7 @@
 		</div>
 	</li>
 {% endmacro %}
-<section id="{{ widget.custom_id }}" class="Theme-Widget Theme-Slider {{ widget.custom_class }}" style="{% if widget.background_style == 'row' %}background:{{ widget.background_color }} url('{{ widget.background_image.src }}') no-repeat 50% 50%;{% endif %}">
+<section {% if widget.custom_id %}id="{{ widget.custom_id }}"{% endif %} class="Theme-Widget Theme-Slider {{ widget.custom_class }}" style="{% if widget.background_style == 'row' %}background:{{ widget.background_color }} url('{{ widget.background_image.src }}') no-repeat 50% 50%;{% endif %}">
 	<div class="{% if widget.background_style == 'box' %}row Theme-Interior{% endif %}" style="{% if widget.background_style == 'box' %}background:{{ widget.background_color }} url('{{ widget.background_image.src }}') no-repeat 50% 50%;{% endif %}">
 		<div class="{{ widget.navigation_dots }}">
 			{% if widget.slide01_enabled or widget.slide02_enabled or widget.slide03_enabled or widget.slide04_enabled or widget.slide05_enabled or widget.slide06_enabled %}

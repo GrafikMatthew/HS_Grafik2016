@@ -23,11 +23,11 @@
 				<div class="Flex-Container {{ top_align }}">
 					{% if top_headingtext and top_headingtype != "off" %}
 						{% if link_url and link_typetop == "heading" %}<a href="{{ link_url }}">{% endif %}
-						<{{ top_headingtype }} class="Heading Flex-Item" style="{% if top_headingcolor %}color:{{ top_headingcolor }};{% endif %}">{{ top_headingtext }}</{{ top_headingtype }}>
+						<{{ top_headingtype }} class="Heading Flex-Item small-10" style="{% if top_headingcolor %}color:{{ top_headingcolor }};{% endif %}">{{ top_headingtext }}</{{ top_headingtype }}>
 						{% if link_url and link_typetop == "heading" %}</a>{% endif %}
 					{% endif %}
 					{% if top_bodytext %}
-						<div class="Text Flex-Item" style="{% if top_bodycolor %}color:{{ top_bodycolor }};{% endif %}">{{ top_bodytext }}</div>
+						<div class="Text Flex-Item small-10" style="{% if top_bodycolor %}color:{{ top_bodycolor }};{% endif %}">{{ top_bodytext }}</div>
 					{% endif %}
 				</div>
 			</div>
@@ -49,11 +49,11 @@
 				<div class="Flex-Container {{ bottom_align }}">
 					{% if bottom_headingtext and bottom_headingtype != "off" %}
 						{% if link_url and link_typebottom == "heading" %}<a href="{{ link_url }}">{% endif %}
-						<{{ bottom_headingtype }} class="Heading Flex-Item" style="{% if bottom_headingcolor %}color:{{ bottom_headingcolor }};{% endif %}">{{ bottom_headingtext }}</{{ bottom_headingtype }}>
+						<{{ bottom_headingtype }} class="Heading Flex-Item small-10" style="{% if bottom_headingcolor %}color:{{ bottom_headingcolor }};{% endif %}">{{ bottom_headingtext }}</{{ bottom_headingtype }}>
 						{% if link_url and link_typebottom == "heading" %}</a>{% endif %}
 					{% endif %}
 					{% if bottom_bodytext %}
-						<div class="Text Flex-Item" style="{% if bottom_bodycolor %}color:{{ bottom_bodycolor }};{% endif %}">{{ bottom_bodytext }}</div>
+						<div class="Text Flex-Item small-10" style="{% if bottom_bodycolor %}color:{{ bottom_bodycolor }};{% endif %}">{{ bottom_bodytext }}</div>
 					{% endif %}
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 		{% endif %}
 	</div>
 {% endmacro %}
-<section id="{{ widget.section_customid }}" class="Theme-Widget Theme-ContentBoxes {{ widget.section_customclasses }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+<section {% if widget.section_customid %}id="{{ widget.section_customid }}"{% endif %} class="Theme-Widget Theme-ContentBoxes {{ widget.section_customclasses }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 	<div class="row Theme-Interior" style="{% if widget.section_bgtype == 'box' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 		{% if widget.section_boxsizing == "medium-12" or widget.section_boxsizing == "medium-6" or widget.section_boxsizing == "medium-4" or widget.section_boxsizing == "medium-3 small-6" %}
 			{{ ContentBox(

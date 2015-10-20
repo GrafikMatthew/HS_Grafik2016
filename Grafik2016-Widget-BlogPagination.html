@@ -1,0 +1,42 @@
+<!--
+
+8888o. 88     .o88o. .o8888    8888o. .o88o. .o8888 88 8888o. .o88o. 888888 88 .o88o. 8888o.
+88  88 88     88  88 88        88  88 88  88 88     88 88  88 88  88   88   88 88  88 88  88
+8888Y' 88     88  88 88  88    8888Y' 888888 88  88 88 88  88 888888   88   88 88  88 88  88
+88  88 88     88  88 88  88    88     88  88 88  88 88 88  88 88  88   88   88 88  88 88  88
+8888Y' 888888 'Y88Y' 'Y8888    88     88  88 'Y8888 88 88  88 88  88   88   88 'Y88Y' 88  88
+
+-->
+{% if is_listing_view and not simple_list_page %}
+	{% set page_view_count = 5 %}
+	{% set page_view_total = (contents.total / contents.limit)|round(0, 'ceil') %}
+	{% set page_view_min = current_page_num - ((page_view_count - 1) / 2) %}
+	{% set page_view_max = current_page_num + ((page_view_count - 1) / 2) %}
+	{% if page_view_min < 1 %}
+		{% set page_view_max = page_view_max + (1 - page_view_min) %}
+		{% set page_view_min = 1 %}
+	{% endif %}
+	{% if page_view_max > page_view_total %}
+		{% set page_view_min = page_view_min + (page_view_total - page_view_max) %}
+		{% set page_view_max = page_view_total %}
+	{% endif %}
+	{% if page_view_min < 1 %}
+		{% set page_view_min = 1 %}
+	{% endif %}
+	<!-- GRAFIK2016 - BlogPagination -->
+	<section class="Theme-Widget Widget-BlogPagination">
+		<div class="row BlogPagination-Interior PadHalf-Top PadHalf-Bottom">
+			<ul class="Interior-Links">
+				<li>{% if current_page_num > 1 %}<a href="{{ blog_page_link(1) }}">{% endif %}<span>&laquo;</span>{% if current_page_num > 1 %}</a>{% endif %}</li>
+				<li>{% if current_page_num > 1 %}<a href="{{ blog_page_link(last_page_num) }}">{% endif %}<span>&lsaquo;</span>{% if current_page_num > 1 %}</a>{% endif %}</li>
+				{% if page_view_min + 0 <= page_view_max %}<li{% if page_view_min + 0 == current_page_num %} class="active"{% endif %}><a href="{{ blog_page_link(page_view_min + 0) }}">{{ (page_view_min + 0)|round(0, 'floor') }}</a></li>{% endif %}
+				{% if page_view_min + 1 <= page_view_max %}<li{% if page_view_min + 1 == current_page_num %} class="active"{% endif %}><a href="{{ blog_page_link(page_view_min + 1) }}">{{ (page_view_min + 1)|round(0, 'floor') }}</a></li>{% endif %}
+				{% if page_view_min + 2 <= page_view_max %}<li{% if page_view_min + 2 == current_page_num %} class="active"{% endif %}><a href="{{ blog_page_link(page_view_min + 2) }}">{{ (page_view_min + 2)|round(0, 'floor') }}</a></li>{% endif %}
+				{% if page_view_min + 3 <= page_view_max %}<li{% if page_view_min + 3 == current_page_num %} class="active"{% endif %}><a href="{{ blog_page_link(page_view_min + 3) }}">{{ (page_view_min + 3)|round(0, 'floor') }}</a></li>{% endif %}
+				{% if page_view_min + 4 <= page_view_max %}<li{% if page_view_min + 4 == current_page_num %} class="active"{% endif %}><a href="{{ blog_page_link(page_view_min + 4) }}">{{ (page_view_min + 4)|round(0, 'floor') }}</a></li>{% endif %}
+				<li>{% if current_page_num < page_view_total %}<a href="{{ blog_page_link(next_page_num) }}">{% endif %}<span>&rsaquo;</span>{% if current_page_num < page_view_total %}</a>{% endif %}</li>
+				<li>{% if current_page_num < page_view_total %}<a href="{{ blog_page_link(page_view_total) }}">{% endif %}<span>&raquo;</span>{% if current_page_num < page_view_total %}</a>{% endif %}</li>
+			</ul>
+		</div>
+	</section>
+{% endif %}

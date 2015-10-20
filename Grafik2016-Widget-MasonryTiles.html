@@ -13,6 +13,7 @@
 {% set bg_image = widget.section_bgimage.src ? "background-image:url('{{ widget.section_bgimage.src }}');background-repeat:no-repeat;background-size:cover;background-position:50% 50%" : "" %}
 {% set row_styles = widget.section_bgtype == "row" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
 {% set box_styles = widget.section_bgtype == "box" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
+<!-- GRAFIK2016 - MasonryTiles -->
 <section class="Theme-Widget Theme-MasonryTiles{{ custom_class }}"{{ custom_id }}{{ row_styles }}>
 	<div class="row Theme-Interior"{{ box_styles }}>
 		<div class="{{ widget.tile_weights }} MasonryCount-{{ widget.tile_count }}">

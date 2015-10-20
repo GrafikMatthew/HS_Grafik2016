@@ -13,6 +13,7 @@
 {% set bg_image = widget.background_image.src ? "background-image:url('{{ widget.background_image.src }}');background-repeat:no-repeat;background-size:cover;" : "" %}
 {% set row_styles = widget.background_style == "row" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
 {% set box_styles = widget.background_style == "box" ? ' style="{{ bg_color }}{{ bg_image }}"' : '' %}
+<!-- GRAFIK2016 - OverlappingBoxes -->
 <section class="Theme-Widget Theme-OverlappingBoxes{{ custom_class }}"{{ custom_id }}{{ row_styles }}>
 	<div class="row Theme-Interior"{{ box_styles }}>
 		<div class="large-6 column Background {{ widget.partial_background_alignment }}" style="{% if widget.partial_background_color %}background-color:{{ widget.partial_background_color }};{% endif %}"></div>

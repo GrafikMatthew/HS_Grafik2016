@@ -1,0 +1,36 @@
+<!--
+
+8888o. 88     .o88o. .o8888    .o88o. 8888o. 888888 88 .o8888 88     888888
+88  88 88     88  88 88        88  88 88  88   88   88 88     88     88    
+8888Y' 88     88  88 88  88    888888 8888Y'   88   88 88     88     8888  
+88  88 88     88  88 88  88    88  88 88  88   88   88 88     88     88    
+8888Y' 888888 'Y88Y' 'Y8888    88  88 88  88   88   88 'Y8888 888888 888888
+
+-->
+{% if not is_listing_view %}
+	{% image "Grafik_PreviewImage" label="X-01. Preview Image", export_to_template_context="True" %}
+	{% image "Grafik_FeaturedImage" label="X-02. Featured Image", export_to_template_context="True" %}
+	<!-- GRAFIK2016 - BlogArticle -->
+	<section class="Theme-Widget Widget-BlogArticle Override-Anchor">
+		<div class="row BlogArticle-Interior">
+			{% if content.widgets.Grafik_BlogArticle_Grafik_FeaturedImage.body.src %}<div class="Interior-FeaturedImage"><img src="{{ content.widgets.Grafik_BlogArticle_Grafik_FeaturedImage.body.src }}" alt="{{ content.widgets.Grafik_BlogArticle_Grafik_FeaturedImage.body.alt }}" style="width:100%;height:auto;" /></div>{% endif %}
+			<div class="Interior-Name PadFull-Top">
+				<div class="column small-offset-1 small-10"><h1 class="h3">{{ content.name }}</h1></div>
+			</div>
+			<div class="Interior-Info">
+				<div class="column small-offset-1 small-10">
+					<span class="Info-Author">
+						<a href="{{ group.absolute_url }}/author/{{ content.blog_post_author.slug }}">
+							<span class="Author-Avatar"><img src="{{ content.blog_post_author.avatar }}" alt="Author: {{ content.blog_post_author.display_name }}" /></span>
+							<span class="Author-Name">{{ content.blog_post_author.display_name }}</span>
+						</a>
+					</span>
+					<span class="Info-Timestamp">{{ content.publish_date_localized }}</span>
+				</div>
+			</div>
+			<div class="Interior-Body PadFull-Bottom">
+				<div class="column small-offset-1 medium-offset-2 small-10 medium-8">{{ content.post_body }}</div>
+			</div>
+		</div>
+	</section>
+{% endif %}

@@ -14,7 +14,7 @@
 		</div>
 	</li>
 {% endmacro %}
-<section id="{{ widget.section_customid }}" class="Theme-Widget Theme-BulkSlider {{ widget.section_customclasses }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%;{% endif %}">
+<section {% if widget.section_customid %}id="{{ widget.section_customid }}"{% endif %} class="Theme-Widget Theme-BulkSlider {{ widget.section_customclasses }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%;{% endif %}">
 	<div class="{% if widget.section_bgtype == 'box' %}row Theme-Interior{% endif %}" style="{% if widget.section_bgtype == 'box' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%;{% endif %}">
 		<div class="{{ widget.section_navdots }}">
 			{% set MediaAssets = widget.media_assetlist|split(';') %}

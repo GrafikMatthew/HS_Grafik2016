@@ -7,12 +7,13 @@
 'Y8888 'Y88Y' 'Y88Y' 'Y8888 888888 888888    88 88 88 88  88 88    
 
 -->
-<section id="{{ widget.section_customid }}" class="Theme-Widget Theme-GoogleMap {{ widget.section_customclasses }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
+<!-- Grafik2016 - GoogleMap -->
+<section {% if widget.section_customid %}id="{{ widget.section_customid }}"{% endif %} class="Theme-Widget Theme-GoogleMap {{ widget.section_customclasses }}" style="{% if widget.section_bgtype == 'row' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 	<div class="row Theme-Interior" style="{% if widget.section_bgtype == 'box' %}background:{{ widget.section_bgcolor }} url('{{ widget.section_bgimage.src }}') no-repeat 50% 50%; background-size: cover;{% endif %}">
 		<div class="Address">
-			<div class="column text-center medium-offset-1 medium-6">625 North Washington Street &mdash; Suite 302 &mdash; Alexandria, VA 22314</div>
-			<div class="column text-center medium-2"><a href="mailto:info@grafik.com">info@grafik.com</a></div>
-			<div class="column text-center medium-2"><a href="tel:+17032994500">703.299.4500</a></div>
+			<div class="column medium-offset-1 medium-6 text-center">625 North Washington Street &mdash; Suite 302 &mdash; Alexandria, VA 22314</div>
+			<div class="column medium-2 text-center"><a href="mailto:info@grafik.com">info@grafik.com</a></div>
+			<div class="column medium-2 end text-center"><a href="tel:+17032994515">703.299.4515</a></div>
 		</div>
 		<div class="Map">
 			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1554.4684324756279!2d-77.0451835!3d38.8109999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b0ee7d3e5b7f%3A0xf16ffbed815f717c!2sGrafik!5e0!3m2!1sen!2sus!4v1442510220439" width="640" height="480" frameborder="0" allowfullscreen></iframe>
